@@ -1,0 +1,18 @@
+.filter{
+    margin-right: 15px;
+    list-style: none;
+    float: right;
+    display: flex;
+}
+.filter-button{
+    width: 85px;
+}
+.btn-secondary{
+background-color: #004064!important;
+color:#fff!important ;
+}
+.btn-secondary:hover {
+    color: #fff!important;
+    background-color: #004064;
+    border-color: white;
+}

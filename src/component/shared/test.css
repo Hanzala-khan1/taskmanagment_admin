@@ -1,0 +1,23 @@
+.main-card{
+    height: 100%;
+    width: 100%;
+    margin-bottom: 2%;
+}
+.d-flex{
+    align-items: center;
+}
+.card{
+    width: 100%!important;
+    height: auto;
+    margin-right: 2%!important;
+    margin-left: 2%!important;
+}
+.bg-blue{
+    background-color: #0093E5;
+}
+.bg-pink{
+    background-color: #FF3743;
+}
+.bg-green{
+    background-color: #00CC14;
+}

@@ -1,0 +1,32 @@
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+.dropdown {
+  /* color: white; */
+}
+.dropdown-menu {
+  /* background-color: #2C2C2C; */
+}
+.btn:focus {
+  box-shadow: none;
+}
+.btn.active:focus {
+  outline: none;
+}
+
+.btn:hover {
+  /* color: #212529; */
+  text-decoration: none;
+}
+.dropdown-submenu .dropdown-menu {
+  /* background-color: #2C2C2C; */
+}
+.ul li {
+  color: white;
+}
