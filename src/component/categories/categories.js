@@ -13,7 +13,7 @@ const Categories = () => {
                     <Lower_nav />
                 </div>
                 <div>
-
+                    <h1>my frist commit </h1>
                 </div>
             </div>
         </div>
