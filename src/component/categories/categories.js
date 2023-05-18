@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './categories.css'
 import Lower_nav from '../shared/Lower_nav'
 import Nav from '../shared/Nav'
@@ -9,6 +9,14 @@ import Delete from '../../assets/svg/delete.png'
 import Edit from '../../assets/svg/edit.png'
 import Category_popUp from '../shared/Category_popUp'
 const Categories = () => {
+    const [popup, setPopup] = useState(false);
+    const handleEdit = () => {
+        setPopup(!popup)
+    }
+    const [pop, setPop] = useState(false);
+    const handleAdd = () => {
+        setPop(!pop)
+    }
     return (
         <div>
             <div>
@@ -23,7 +31,10 @@ const Categories = () => {
 
                     <div className='top-x'>
                         <h4>Categories</h4>
-                        <Category_popUp />
+                        <a onClick={handleAdd} data-toggle="modal" data-target="#exampleModal">
+                            +Add New
+                        </a>
+                        {pop && <Category_popUp editCategory={false}/>}
                     </div>
                     <div style={{ marginRight: '6rem' }}>
                         <div className='col-lg-3 col-md-6 col-sm-12 d-flex category'>
@@ -33,29 +44,11 @@ const Categories = () => {
                             <div className='top-gap'>
                                 <h5>Web Development</h5>
                                 <div>
-                                    <img src={Delete} /> <a>Delete</a> <img src={Edit} /> <a>Edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6 col-sm-12 d-flex category'>
-                            <div>
-                                <img src={globe} />
-                            </div>
-                            <div className='top-gap'>
-                                <h5>Flutter</h5>
-                                <div>
-                                    <img src={Delete} /> <a>Delete</a> <img src={Edit} /> <a>Edit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6 col-sm-12 d-flex category'>
-                            <div>
-                                <img src={globe} />
-                            </div>
-                            <div className='top-gap'>
-                                <h5>Android Development</h5>
-                                <div>
-                                    <img src={Delete} /> <a>Delete</a> <img src={Edit} /> <a>Edit</a>
+                                    <img src={Delete} /> <a>Delete</a> <img src={Edit} />
+                                    <a onClick={handleEdit} data-toggle="modal" data-target="#exampleModal">
+                                        Edit
+                                    </a>
+                                    {popup && <Category_popUp  editCategory={true}  />}
                                 </div>
                             </div>
                         </div>
