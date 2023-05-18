@@ -9,6 +9,7 @@ import User from './component/users/user';
 import Chats from './component/chats/chats';
 import Setting from './component/Settings/setting';
 import { useDispatch, useSelector } from 'react-redux';
+import Menu from './component/users/Menu';
 
 function App() {
   // const navigate = useNavigate();
@@ -33,6 +34,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+
           <Route
             path='/'
             element={<Admin_Page />}>
@@ -69,6 +71,7 @@ function App() {
             element={<ProtectedRoute>
               <Setting />
             </ProtectedRoute>}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>

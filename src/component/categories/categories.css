@@ -1,0 +1,32 @@
+.categories{
+    border-radius: 12px;
+    margin-left: 3rem;
+    background: #F4F5F8;
+    height: 440px;
+    margin-top: 5rem;
+    margin-right: 3rem;
+}
+
+.category{
+    padding: 0rem;
+    margin-left: 3rem;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 19px rgba(159, 159, 159, 0.12);
+    border-radius: 10px;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.top-gap{
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+}
+
+.top-x{
+    padding-left: 3rem;
+    padding-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 3rem;
+}

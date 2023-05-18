@@ -1,6 +1,7 @@
 .filter{
-    margin-right: 15px;
+    margin-right: 3rem;
     list-style: none;
+    margin-bottom: 1rem;
     float: right;
     display: flex;
 }
