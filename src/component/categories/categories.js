@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+
+import React, { useEffect, useState } from 'react'
 import './categories.css'
 import Lower_nav from '../shared/Lower_nav'
 import Nav from '../shared/Nav'
@@ -8,15 +9,99 @@ import globe from '../../assets/svg/globe.png'
 import Delete from '../../assets/svg/delete.png'
 import Edit from '../../assets/svg/edit.png'
 import Category_popUp from '../shared/Category_popUp'
+import axios from 'axios'
+import { API_HOST } from '../../assets/dataconfig/dataconfig'
+import { useSelector } from 'react-redux'
 const Categories = () => {
     const [popup, setPopup] = useState(false);
-    const handleEdit = () => {
-        setPopup(!popup)
-    }
     const [pop, setPop] = useState(false);
+    const handleEdit = () => {
+        setPopup(!popup);
+        setPop(false);
+    };
+
     const handleAdd = () => {
-        setPop(!pop)
+        setPop(!pop);
+        setPopup(false);
+    };
+    const [categories, setCategories] = useState([])
+    const [categoriesdata, setCategoriesdata] = useState("")
+    const user = useSelector(state => state.loginUser.user)
+    const token = user.token
+    useEffect(() => {
+        getcategories()
+    })
+    const getcategories = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/category/getcategory`,
+                data: {},
+                headers: {
+                    "Content-Type": '',
+                    token: token
+                }
+            })
+            setCategories(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
     }
+    const Addcategories = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/category/addcategory`,
+                data: {
+                    category_title: categoriesdata
+                },
+                headers: {
+                    "Content-Type": '',
+                    token: token
+                }
+            })
+            setCategories(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const Deletecategories = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/category/deletecategory`,
+                data: {
+                    category_title: categoriesdata
+                },
+                headers: {
+                    "Content-Type": '',
+                    token: token
+                }
+            })
+            setCategories(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const Updatecategories = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/category/updatecategory`,
+                data: {
+                    category_title: categoriesdata
+                },
+                headers: {
+                    "Content-Type": '',
+                    token: token
+                }
+            })
+            setCategories(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div>
             <div>
@@ -31,10 +116,10 @@ const Categories = () => {
 
                     <div className='top-x'>
                         <h4>Categories</h4>
-                        <a onClick={handleAdd} data-toggle="modal" data-target="#exampleModal">
+                        <a onClick={handleAdd} data-toggle="modal" data-target="#realModal">
                             +Add New
                         </a>
-                        {pop && <Category_popUp editCategory={false}/>}
+                        {pop && <Category_popUp editCategory={false} />}
                     </div>
                     <div style={{ marginRight: '6rem' }}>
                         <div className='col-lg-3 col-md-6 col-sm-12 d-flex category'>
@@ -48,7 +133,8 @@ const Categories = () => {
                                     <a onClick={handleEdit} data-toggle="modal" data-target="#exampleModal">
                                         Edit
                                     </a>
-                                    {popup && <Category_popUp  editCategory={true}  />}
+                                    {popup && <Category_popUp editCategory={true} />}
+
                                 </div>
                             </div>
                         </div>
