@@ -14,27 +14,27 @@ function Menu() {
     }
     return (
         <div>
-            <div class="dropdown">
-                <button class="btn " type="button" data-toggle="dropdown">
+            <div className="dropdown">
+                <button className="btn " type="button" data-toggle="dropdown">
                     <img src={dot} /> </button>
-                <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">View Details</a></li>
-                    <li><a tabindex="-1" href="#"></a>View Attachments</li>
-                    <li class="dropdown-submenu">
-                        <a class="test" tabindex="-1" href="#">Update Status <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">Assigned </a></li>
-                            <li><a tabindex="-1" href="#">In Progress</a></li>
-                            <li><a tabindex="-1" href="#">Pending Client Review</a></li>
-                            <li><a tabindex="-1" href="#">Pending T5hird Party Action</a></li>
-                            <li><a tabindex="-1" href="#">Revison</a></li>
-                            <li><a tabindex="-1" href="#">Ready for Review</a></li>
-                            <li><a tabindex="-1" href="#">Completed</a></li>
-                            <li><a tabindex="-1" href="#">Archive After 30 days</a></li>
+                <ul className="dropdown-menu">
+                    <li><a tabIndex="-1" href="#">View Details</a></li>
+                    <li><a tabIndex="-1" href="#">View Attachments</a></li>
+                    <li className="dropdown-submenu">
+                        <a className="test" tabIndex="-1" href="#">Update Status <span className="caret"></span></a>
+                        <ul className="dropdown-menu">
+                            <li><a tabIndex="-1" href="#">Assigned </a></li>
+                            <li><a tabIndex="-1" href="#">In Progress</a></li>
+                            <li><a tabIndex="-1" href="#">Pending Client Review</a></li>
+                            <li><a tabIndex="-1" href="#">Pending T5hird Party Action</a></li>
+                            <li><a tabIndex="-1" href="#">Revison</a></li>
+                            <li><a tabIndex="-1" href="#">Ready for Review</a></li>
+                            <li><a tabIndex="-1" href="#">Completed</a></li>
+                            <li><a tabIndex="-1" href="#">Archive After 30 days</a></li>
                         </ul>
                     </li>
-                    <li><a tabindex="-1" href="#">Chat</a></li>
-                    <li><a tabindex="-1" href="#">Delete</a></li>
+                    <li><a tabIndex="-1" href="#">Chat</a></li>
+                    <li><a tabIndex="-1" href="#">Delete</a></li>
 
                 </ul>
             </div>

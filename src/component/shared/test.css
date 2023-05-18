@@ -1,23 +1,27 @@
-.main-card{
-    height: 100%;
-    width: 100%;
-    margin-bottom: 2%;
+.main-card {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2%;
 }
-.d-flex{
-    align-items: center;
+.d-flex {
+  align-items: center;
 }
-.card{
-    width: 100%!important;
-    height: auto;
-    margin-right: 2%!important;
-    margin-left: 2%!important;
+.main-card {
+  height: 100vh;
 }
-.bg-blue{
-    background-color: #0093E5;
+.card {
+  width: 100% !important;
+  height: auto;
+  margin-right: 2% !important;
+  margin-left: 2% !important;
 }
-.bg-pink{
-    background-color: #FF3743;
+
+.bg-blue {
+  background-color: #0093e5;
 }
-.bg-green{
-    background-color: #00CC14;
+.bg-pink {
+  background-color: #ff3743;
+}
+.bg-green {
+  background-color: #00cc14;
 }

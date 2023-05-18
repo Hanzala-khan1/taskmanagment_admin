@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import In_pogress from '../shared/In_pogress'
 import To_do from '../shared/To_do'
@@ -8,7 +8,88 @@ import Filter from '../shared/Filter'
 import '../project/projects.css'
 import Test from '../shared/Test'
 import Nav from '../shared/Nav'
+import { useDispatch, useSelector } from 'react-redux'
+import { API_HOST } from '../../assets/dataconfig/dataconfig'
+import axios from 'axios'
 function Quick_task() {
+  const [subtaskTodo, setSubtaskTodo] = useState([]);
+  const [subtaskCompleted, setSubtaskCompleted] = useState([]);
+  const [subtaskPending, setSubtaskPending] = useState([]);
+  const [subtaskAll, setSubtaskAll] = useState([]);
+  const user = useSelector(state => state.loginUser.user)
+  const token = user.token
+  const dispatch = useDispatch();
+  useEffect(() => {
+    CompletedSubtask();
+    PendingSubtask();
+    todoSubtask();
+    ALLSubtask();
+  }, [])
+
+  const CompletedSubtask = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=completed`,
+        data: {},
+        headers: {
+          "Content-Type": '',
+          token: token
+        }
+      })
+      setSubtaskCompleted(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const PendingSubtask = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=pending`,
+        data: {},
+        headers: {
+          "Content-Type": '',
+          token: token
+        }
+      })
+      setSubtaskPending(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const todoSubtask = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=todo`,
+        data: {},
+        headers: {
+          "Content-Type": '',
+          token: token
+        }
+      })
+      setSubtaskTodo(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const ALLSubtask = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=new`,
+        data: {},
+        headers: {
+          "Content-Type": '',
+          token: token
+        }
+      })
+      setSubtaskAll(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <div>
 
@@ -26,47 +107,47 @@ function Quick_task() {
 
       <div id="carouselExampleIndicators" className="carousel slide" data-interval="false" data-pause="hover" data-ride="carousel">
         <ol className="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div className="carousel-inner" style={{ marginTop: '2%' }}>
           <div className="carousel-item active">
             <div>
-              <Test />
+              <Test data={subtaskAll} />
             </div>
             <div>
-              <In_pogress />
+              <In_pogress data={subtaskPending} />
             </div>
             <div>
-              <To_do />
+              <To_do data={subtaskTodo} />
             </div>
             <div>
-              <Completed />
+              <Completed data={subtaskCompleted} />
             </div>
           </div>
           <div className="carousel-item">
             <div>
-              <Test />
+              <Test data={subtaskAll} />
             </div>
             <div>
-              <In_pogress />
+              <In_pogress data={subtaskPending} />
             </div>
             <div>
-              <To_do />
+              <To_do data={subtaskTodo} />
             </div>
             <div>
-              <Completed />
+              <Completed data={subtaskCompleted} />
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="sr-only">Next</span>
         </a>
       </div>
     </div>

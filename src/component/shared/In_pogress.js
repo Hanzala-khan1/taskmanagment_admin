@@ -3,57 +3,43 @@ import Card from './Card'
 import '../project/projects.css'
 import { Link } from 'react-router-dom'
 import './test.css'
-function In_pogress() {
-    let progress = [
-        {
-            name: "Zeshan",
-            description: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate meaningful content.",
-            value: "Mid",
-            time: '11hr.23m',
-            intro: '',
-            date: ''
-        },
-        {
-            name: "Yasir",
-            description: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate meaningful content.",
-            value: "High",
-            time: '11hr.23m',
-            intro: '',
-            date: ''
-        },
-        {
-            name: "uayfgauy",
-            description: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate meaningful content.",
-            value: "Low",
-            time: '11hr.23m',
-            intro: '',
-            date: ''
-        },
-    ]
+function In_pogress(data) {
+    const card_pending = data.data;
+
     return (
         <div>
             {/* In progress card */}
-            <div className='col-lg-3 col-md-6 col-sm-12 overflow-scroll'>
-                <div className=' main-card'>
-                    <div class="card">
-                        <div class="card-body">
+            <div className='col-lg-3 col-md-6 col-sm-12 overflow-scroll' style={{ flex: "1" }}>
+                <div className='main-card' style={{ flex: "1" }}>
+                    <div className="card">
+                        <div className="card-body">
                             <div className='d-flex h-p justify-space'>
                                 <h6 style={{ float: 'left', marginTop: '0' }}>In Progress</h6>
                                 <p style={{ float: 'right' }}>View All</p>
                             </div>
                         </div>
+                        {card_pending.length > 0 ? (
+                            card_pending.map((row) => {
+                                return <Card data={row} key={row._id} />;
+                            })
+                        ) : (
+                            <div>
+                                <div className='div1 pad' style={{ height: "100%" }}>
+                                    <div className='d-flex center justify'>
+                                        <div className='d-flex center ' style={{ gap: '12px' }}>
 
-                        {progress.map((row) => {
-                            return <Card row={row} key={row.name} />
-
-                        })}
-
+                                            <h5>No available Content to show </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
+
 
 export default In_pogress

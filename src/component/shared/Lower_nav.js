@@ -12,11 +12,11 @@ function Lower_nav() {
       <br></br>
       <div >
         <ul className='list'>
-          <li > <Link to="/project"><a>Projects</a></Link></li>
-          <li > <Link to="/quicktask"><a>Quick Task</a></Link></li>
-          <li > <Link to="/categories"> <a>Categories</a></Link></li>
-          <li > <Link to="/chats"><a>Chats</a></Link> </li>
-          <li > <Link to="/user"><a>users</a></Link> </li>
+          <li > <Link to="/project">Projects</Link></li>
+          <li > <Link to="/quicktask">Quick Task</Link></li>
+          <li > <Link to="/categories"> Categories</Link></li>
+          <li > <Link to="/chats">Chats</Link> </li>
+          <li > <Link to="/user">users</Link> </li>
         </ul>
         {/* <Filter/> */}
       </div>

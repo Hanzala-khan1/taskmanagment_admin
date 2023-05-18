@@ -11,9 +11,9 @@ function Nav() {
             <div>
                 <div>
                     <ul className='nav-ul'>
-                        <a> <li><h1 className='logo1'> <span style={{ color: '#004064' }}>LO</span><span style={{ color: '#171C1F!important' }}>GO</span></h1></li></a>
+                        <li><h1 className='logo1'> <span style={{ color: '#004064' }}>LO</span><span style={{ color: '#171C1F!important' }}>GO</span></h1></li>
                         <a className='active-link'><li style={{ padding: '20px' }}><Link to={"/project"}> Work </Link></li></a>
-                        <a> <li style={{ padding: '20px' }}><Link to={"/Settings"}> Settings</Link></li></a>
+                        <li style={{ padding: '20px' }}><Link to={"/Settings"}> Settings</Link></li>
                     </ul>
                     <ul className='nav-li' style={{ alignItems: 'center' }}>
                         <li style={{ padding: '20px' }}><img src={search} /></li>
