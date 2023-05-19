@@ -6,11 +6,10 @@ import Lower_nav from '../shared/Lower_nav'
 import In_pogress from '../shared/In_pogress'
 import To_do from '../shared/To_do'
 import Completed from '../shared/Completed'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import { API_HOST } from '../../assets/dataconfig/dataconfig'
 function Projects() {
   const [projectstodo, setProjectstodo] = useState([]);
@@ -20,8 +19,7 @@ function Projects() {
 
   const user = useSelector(state => state.loginUser.user)
   const token = user.token
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   useEffect(() => {
     Completedprojects();
     Pendingprojects();
@@ -36,7 +34,6 @@ function Projects() {
         url: `${API_HOST}/project/getproject?status=completed`,
         data: {},
         headers: {
-          "Content-Type": '',
           token: token
         }
       })
