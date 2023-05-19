@@ -27,4 +27,3 @@ export const UserReducer = (state = initialState, { type, payload }) => {
             return state;
     }
 };
-

@@ -41,7 +41,7 @@ function Admin_Page() {
           password: password
         }
       });
-      console.log(res)
+      localStorage.setItem("user", JSON.stringify(res.data.data));
       dispatch(Adduser(res.data.data))
       navigate("/project")
     } catch (err) {

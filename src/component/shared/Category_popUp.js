@@ -1,17 +1,72 @@
-import React from 'react'
+import React, { useState } from 'react'
 import globe from '../../assets/svg/globe.png'
 
 import './Category_popUp.css'
-function Category_popUp({ editCategory }) {
-  console.log("editCategory", editCategory)
+import { API_HOST } from '../../assets/dataconfig/dataconfig';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+function Category_popUp(probs) {
+
+  const { editCategory, Category, getcategories } = probs
+
+  const [AddcategoryValue, setAddCategoryValue] = useState(
+    editCategory === true ? Category.category_title : ""
+  )
+
+  const user = useSelector(state => state.loginUser.user)
+  const token = user.token
+
+  const handleChange = (e) => {
+    setAddCategoryValue(e.target.value)
+  }
+
+  const handleAddCategory = async () => {
+    try {
+      const res = await axios({
+        method: 'post',
+        url: `${API_HOST}/category/addcategory`,
+        data: {
+          category_title: AddcategoryValue
+        },
+        headers: {
+          token: token
+        }
+      })
+      getcategories();
+    } catch (err) {
+      console.log(err)
+    }
+  };
+  const handleEditCategory = async (id) => {
+    try {
+      await axios({
+        method: 'put',
+        url: `${API_HOST}/category/updatecategory/${Category._id}`,
+        data: {
+          category_title: AddcategoryValue
+        },
+        headers: {
+          token: token
+        }
+      })
+      getcategories();
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div>
-      <div className="modal fade" id={(editCategory === true ? "exampleModal" : "realModal")} tabIndex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {/* <a data-toggle="modal" data-target="#exampleModal">
+         +Add New
+       </a> */}
+
+      <div className="modal fade" id={(editCategory === true ? "exampleModal" : "realModal")} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">{editCategory=true ? "Edit Category" : "Add Category"}</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <h5 className="modal-title" id="exampleModalLabel">{editCategory === true ? "Edit Category" : "Add Category"}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -23,10 +78,10 @@ function Category_popUp({ editCategory }) {
               </div>
               <br></br>
               <div style={{ textAlign: 'center' }}>
-                <input type="name" placeholder={editCategory=true ? "Update Category" : "Add Category"} className='inputs'></input>
+                <input type="name" placeholder={editCategory === true ? "Update Category" : "Add Category"} className='inputs'></input>
                 <br></br>
                 <br></br>
-                <input type="submit" value= {editCategory=true ? "Update Category" : "Add Category"} className='inputss'></input>
+                <input type="submit" value={editCategory === true ? "Update Category" : "Add Category"} className='inputss'></input>
               </div>
             </div>
 

@@ -40,36 +40,46 @@ function App() {
             element={<Admin_Page />}>
           </Route>
           <Route
-            path='/project'
+            path="/projects"
             element={
-
-              <Projects />
-
+              <ProtectedRoute>
+                <Projects />
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/quicktask'
             element={
-              <Quick_task />
+              <ProtectedRoute>
+                <Quick_task />
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/categories'
             element={
-              <Categories />
+              <ProtectedRoute>
+                <Categories />
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/chats'
             element={
-              <Chats />
+              <ProtectedRoute>
+                <Chats />
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/user'
             element={
-              <User />
+              <ProtectedRoute>
+                <User />
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/Settings'
             element={
-              <Setting />
+              <ProtectedRoute>
+                <Setting />
+              </ProtectedRoute>
             }></Route>
 
         </Routes>
