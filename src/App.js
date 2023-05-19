@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from "react"
+import React from "react"
 import Admin_Page from './component/admin/Admin_Page';
 import Projects from './component/project/Projects';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
@@ -8,8 +8,6 @@ import Categories from './component/categories/categories';
 import User from './component/users/user';
 import Chats from './component/chats/chats';
 import Setting from './component/Settings/setting';
-import { useDispatch, useSelector } from 'react-redux';
-import Menu from './component/users/Menu';
 
 function App() {
 
@@ -21,9 +19,9 @@ function App() {
     if (!user) {
       return <Navigate to="/" />;
     }
-
     return children;
   };
+
   return (
     <div>
       <BrowserRouter>
@@ -34,7 +32,7 @@ function App() {
             element={<Admin_Page />}>
           </Route>
           <Route
-            path="/projects"
+            path="/project"
             element={
               <ProtectedRoute>
                 <Projects />
