@@ -1,11 +1,19 @@
 import { actionType } from "../constants/actionsTypes";
-
-// Check if user data exists in localStorage
 const storedUser = JSON.parse(localStorage.getItem("user"));
-
+if (storedUser) {
+    // User data is stored in the local storage
+    const user = storedUser;
+    console.log("hhhhhhhhhh", user)
+    // Perform actions with the user data
+} else {
+    console.log("error ha ")
+    // User data is not stored in the local storage
+    // Handle the case where the user is not logged in
+}
 const initialState = {
     user: storedUser || null, // Use stored user data if available
 };
+// Check if user data exists in localStorage
 
 export const UserReducer = (state = initialState, { type, payload }) => {
     switch (type) {
