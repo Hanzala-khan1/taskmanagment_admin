@@ -41,12 +41,12 @@ function Admin_Page() {
           password: password
         }
       });
-      localStorage.setItem("user", JSON.stringify(res.data.data));
+      console.log(res.data.data)
       dispatch(Adduser(res.data.data))
       navigate("/project")
     } catch (err) {
       setError(true)
-      setErrorvalue(err.response.data.message)
+      // setErrorvalue(err.response.data.message)
       console.log(err)
     }
   }
