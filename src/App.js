@@ -50,28 +50,28 @@ function App() {
             element={
               <ProtectedRoute>
                 <Categories />
-              </ProtectedRoute>
+               </ProtectedRoute>
             }></Route>
           <Route
             path='/chats'
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Chats />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }></Route>
           <Route
             path='/user'
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <User />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }></Route>
           <Route
             path='/Settings'
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Setting />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }></Route>
 
         </Routes>
