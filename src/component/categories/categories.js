@@ -30,10 +30,6 @@ const Categories = () => {
         setPop(!pop);
         setPopup(false);
     };
-    const [categories, setCategories] = useState([])
-    const [categoriesdata, setCategoriesdata] = useState("")
-    const user = useSelector(state => state.loginUser.user)
-    const token = user.token
     useEffect(() => {
         getcategories()
     })
