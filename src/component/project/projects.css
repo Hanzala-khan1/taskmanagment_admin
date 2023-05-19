@@ -4,7 +4,8 @@ a{
     text-decoration: none;
 }
 a:hover{
-    background-color: #ddadad;
+    background-color: none;
+    text-decoration: none;
 }
 .right{
     text-align: right!important;

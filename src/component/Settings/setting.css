@@ -3,6 +3,7 @@
 
 }
 .left_right{
+    
     margin-left: 3rem;
     margin-right: 3rem;
 }
@@ -12,6 +13,8 @@
 .hr-tag{
     margin-left: 3rem;
     margin-right: 22rem;
+    height: 0.1vh;
+    background-color: #e7d7d7;
 }
 .anchor{
     text-decoration: none;
@@ -24,8 +27,10 @@
     width: 100%;
 }
 .inner-hr{
+    height: 0.1vh;
+    background-color: #e7d7d7;
     margin-left: 3rem;
-    margin-right: 32rem;
+    margin-right: 26rem;
 }
 a:hover{
     background-color: none;
