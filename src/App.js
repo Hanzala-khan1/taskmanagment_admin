@@ -12,17 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Menu from './component/users/Menu';
 
 function App() {
-  // const navigate = useNavigate();
-  const [userlogin, setUserlogin] = useState(false);
-
-  // Get user data from localStorage
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-
-  const user = storedUser || null;
 
   const ProtectedRoute = ({ children }) => {
     // Get user data from localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
+    const user = storedUser;
 
     if (!user) {
       return <Navigate to="/" />;
