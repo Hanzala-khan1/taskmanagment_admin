@@ -1,0 +1,54 @@
+.iconss{
+    margin-right: 40%;
+    margin-left: 40%;
+    background: #E8FBFF;
+    border-radius: 15px;
+    width: 100px;
+    height: 100px;
+}
+h4{
+    color: #000000;
+    font-size: 16px;
+}
+p{
+    color: #8D8D8D;
+    font-size: 13px;
+}
+.inputs{
+    border: none;
+    background: #F4F4F4;
+    border-radius: 10px;
+    height: 40px;
+    width: 250px;
+}
+.inputs2{
+    border: none;
+    border-radius: 10px;
+    background: #2F2F2F;;
+    height: 40px;
+    width: 250px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.modal-body{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+::placeholder{
+   left: 10px;
+   font-family: 'DM Sans';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 13px;
+   line-height: 21px;
+   color: #2F2F2F;
+}
+.key_lock{
+    position: absolute;
+    margin: 10px;
+}

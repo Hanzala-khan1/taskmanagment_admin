@@ -1,0 +1,32 @@
+.heading{
+    font-weight: bold;
+
+}
+.left_right{
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+.bold{
+    font-weight: bold;
+}
+.hr-tag{
+    margin-left: 3rem;
+    margin-right: 22rem;
+}
+.anchor{
+    text-decoration: none;
+    color: #989898;
+    background-color: #fff;
+    display: inline-block;
+    width: 72%
+}
+.width{
+    width: 100%;
+}
+.inner-hr{
+    margin-left: 3rem;
+    margin-right: 32rem;
+}
+a:hover{
+    background-color: none;
+}

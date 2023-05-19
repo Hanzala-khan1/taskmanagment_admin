@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import './categories.css'
 import Lower_nav from '../shared/Lower_nav'
 import Nav from '../shared/Nav'
-
 import Filter from '../shared/Filter'
 import globe from '../../assets/svg/globe.png'
 import Delete from '../../assets/svg/delete.png'
@@ -24,83 +23,7 @@ const Categories = () => {
         setPop(!pop);
         setPopup(false);
     };
-    const [categories, setCategories] = useState([])
-    const [categoriesdata, setCategoriesdata] = useState("")
-    const user = useSelector(state => state.loginUser.user)
-    const token = user.token
-    useEffect(() => {
-        getcategories()
-    })
-    const getcategories = async () => {
-        try {
-            const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/getcategory`,
-                data: {},
-                headers: {
-                    "Content-Type": '',
-                    token: token
-                }
-            })
-            setCategories(res.data.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    const Addcategories = async () => {
-        try {
-            const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/addcategory`,
-                data: {
-                    category_title: categoriesdata
-                },
-                headers: {
-                    "Content-Type": '',
-                    token: token
-                }
-            })
-            setCategories(res.data.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    const Deletecategories = async () => {
-        try {
-            const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/deletecategory`,
-                data: {
-                    category_title: categoriesdata
-                },
-                headers: {
-                    "Content-Type": '',
-                    token: token
-                }
-            })
-            setCategories(res.data.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    const Updatecategories = async () => {
-        try {
-            const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/updatecategory`,
-                data: {
-                    category_title: categoriesdata
-                },
-                headers: {
-                    "Content-Type": '',
-                    token: token
-                }
-            })
-            setCategories(res.data.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+
 
     return (
         <div>

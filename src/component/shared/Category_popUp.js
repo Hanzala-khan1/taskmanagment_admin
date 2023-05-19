@@ -6,16 +6,12 @@ function Category_popUp({ editCategory }) {
   console.log("editCategory", editCategory)
   return (
     <div>
-      {/* <a data-toggle="modal" data-target="#exampleModal">
-         +Add New
-       </a> */}
-
-      <div className="modal fade" id={(editCategory === true ? "exampleModal" : "realModal")} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id={(editCategory === true ? "exampleModal" : "realModal")} tabIndex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">{editCategory=true ? "Edit Category" : "Add Category"}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
