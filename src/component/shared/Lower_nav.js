@@ -18,7 +18,6 @@ function Lower_nav() {
           <li > <Link to="/chats">Chats</Link> </li>
           <li > <Link to="/user">users</Link> </li>
         </ul>
-        {/* <Filter/> */}
       </div>
     </div>
   )

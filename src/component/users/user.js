@@ -4,7 +4,10 @@ import Lower_nav from '../shared/Lower_nav'
 import search from '../../assets/svg/search.svg'
 import Delete from '../../assets/svg/delete.png'
 import Dot from '../../assets/svg/dot.svg'
-import './user.css'
+import style from './user.module.css'
+import man from '../../assets/svg/man.svg'
+import UserButtons from './userButtons'
+// import admin from '../../component/admin/admin.css'
 import UserData from './userData'
 const User = () => {
     let users = [
@@ -15,7 +18,8 @@ const User = () => {
             status: 'Active',
             Duration: '08 mint ago',
             deleteImg: Delete,
-            dotImg: Dot
+            dotImg: Dot,
+            userImg:man
         },
         {
             name: "Imran",
@@ -24,7 +28,8 @@ const User = () => {
             status: 'Fired',
             Duration: '12 mint ago',
             deleteImg: Delete,
-            dotImg: Dot
+            dotImg: Dot,
+            userImg:man
         },
         {
             name: "Irfan",
@@ -33,7 +38,8 @@ const User = () => {
             status: 'Active',
             Duration: '20 mint ago',
             deleteImg: Delete,
-            dotImg: Dot
+            dotImg: Dot,
+            userImg:man
         }
     ]
     // console.log(user);
@@ -43,37 +49,25 @@ const User = () => {
                 <div>
                     <Nav />
                 </div>
-                <div>
-                    <Lower_nav />
+                <div className='middle'>
+                    <Lower_nav /> 
+                    <UserButtons />
                 </div>
             </div>
-            <div className='searchBar mar'>
-                <div className="input-group">
-                    <div className="form-outline">
-                        <img src={search} />
-                        <input id="search-focus" type="search" className="form-control" />
-                        <label className="form-label" for="form1"></label>
-                    </div>
-                </div>
+            <br></br>
+            <label className={`${style.search_label} ${style.mar}`}>
+                <img className={style.search_svg} src={search} />
+                <input className={style.search_box} placeholder='Search user by email, Username....' type="search" />
+            </label>
+            <div className={style.mar}>
+                <table className="table">
+                    <tbody>
+                        {users.map((user) => {
+                            return <UserData key={user.name} user={user} />
+                        })}
+                    </tbody>
+                </table>
             </div>
-            <table class="table mar">
-                <thead>
-                    <tr>
-                        <th>Select</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Status</th>
-                        <th>Duration</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {users.map((user)=>{
-                return <UserData key={user.name} user={user} />
-                  })}
-                </tbody>
-            </table>
         </div>
     )
 }

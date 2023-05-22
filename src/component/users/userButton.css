@@ -1,0 +1,54 @@
+.user_buttons{
+    margin-right: 3rem;
+    list-style: none;
+    margin-bottom: 1rem;
+    float: right;
+    display: flex;
+}
+
+.size{
+    display: flex;
+    justify-content: space-around;
+    font-size: 13px;
+}
+
+.button_one{
+    width: 112px;
+}
+
+.button_two{
+    width: 112px;
+}
+
+.button_three{
+    width: 146px;
+}
+
+.img_1{
+    width: 14px;
+}
+
+.img_2{
+    width: 17px;
+}
+
+.img_3{
+    width: 12px;
+}
+.tick_img{
+    bottom: 7px;
+    position: absolute;
+    margin: 7px;
+    left: 14px;
+    display: flex;
+}
+.btn-secondary{
+background-color: #004064!important;
+color:#fff!important ;
+}
+
+.btn-secondary:hover {
+    color: #fff!important;
+    background-color: #004064;
+    border-color: white;
+}

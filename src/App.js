@@ -8,6 +8,7 @@ import Categories from './component/categories/categories';
 import User from './component/users/user';
 import Chats from './component/chats/chats';
 import Setting from './component/Settings/setting';
+import Setting_popUp from './component/Settings/Setting_popUp';
 
 function App() {
 
@@ -34,23 +35,23 @@ function App() {
           <Route
             path="/project"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Projects />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }></Route>
           <Route
             path='/quicktask'
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Quick_task />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }></Route>
           <Route
             path='/categories'
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Categories />
-               </ProtectedRoute>
+              //  </ProtectedRoute>
             }></Route>
           <Route
             path='/chats'
@@ -73,6 +74,7 @@ function App() {
                 <Setting />
               // </ProtectedRoute>
             }></Route>
+            
 
         </Routes>
       </BrowserRouter>
