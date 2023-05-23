@@ -61,3 +61,27 @@ table td,
   input::placeholder{
     color: rgba(0, 0, 0, 0.38);
   }
+
+.dropdown-item:hover{
+    background-color: none;
+}
+
+.hov{
+    font-weight: 100;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+}
+.hov:hover{
+    background-color: black;
+    color: #FFFFFF!important;
+
+}
+
+.dropdown-menu a.dropdown-item:hover {
+  color: white!important;
+  background-color: none!important; 
+}
+a{
+    text-decoration: none!important;
+}

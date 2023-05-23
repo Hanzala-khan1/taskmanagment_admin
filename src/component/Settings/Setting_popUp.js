@@ -2,7 +2,7 @@ import React from 'react'
 import './Setting_popUp.css'
 import lock_key from '../../assets/svg/lock-key.svg'
 function Setting_popUp({ editCategory }) {
-  console.log("")
+  console.log("Abcd")
   return (
     <div>
       <div className="modal fade" id={(editCategory === true ? "exampleModal" : "realModal")} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

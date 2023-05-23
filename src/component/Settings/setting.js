@@ -42,7 +42,6 @@ const Setting = () => {
                         onClick={handlePassword}>Change Password</a>
                     {popup && <Setting_popUp editCategory={true} />}
                     <img src={lock} />
-
                 </div>
                 <hr className='inner-hr'></hr>
                 <br></br>

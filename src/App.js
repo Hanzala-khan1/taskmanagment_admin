@@ -35,44 +35,44 @@ function App() {
           <Route
             path="/project"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Projects />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/quicktask'
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Quick_task />
-              // </ProtectedRoute>
+               </ProtectedRoute>
             }></Route>
           <Route
             path='/categories'
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Categories />
-              //  </ProtectedRoute>
+                </ProtectedRoute>
             }></Route>
           <Route
             path='/chats'
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Chats />
-              // </ProtectedRoute>
+               </ProtectedRoute>
             }></Route>
           <Route
             path='/user'
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <User />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/Settings'
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Setting />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }></Route>
             
 
