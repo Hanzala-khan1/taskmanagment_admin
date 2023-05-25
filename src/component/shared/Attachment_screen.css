@@ -1,0 +1,38 @@
+.attachment-h{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+.box{
+    position: absolute;
+    width: 230px;
+    height: 68px;
+    background: #F4F5F8;
+    border-radius: 5px;
+}
+
+.pdf-div{
+    margin-top: 18px;
+    top: 10px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.back-button{
+    width: 160px;
+    background: #ffffff;
+    border: 1px solid #004064;
+    margin-bottom: 45px;
+    border-radius: 5px;
+    height: 36px;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 950px!important; 
+      margin: 1.75rem auto;
+    }
+  }

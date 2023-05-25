@@ -1,0 +1,16 @@
+.reply-input{
+    border: 1px solid #C0D0FF;
+    height: 53px;
+    width: 803px;
+    border-radius: 10px;
+    border-width: 1px
+}  
+.input-field::placeholder {
+    margin-left: 10px;
+  }
+
+  /* @media (max-width: 970px) {
+    .reply-input {
+      width: 700px;
+    }
+  } */

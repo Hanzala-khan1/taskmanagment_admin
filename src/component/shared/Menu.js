@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import $ from "jquery"
 import dot from '../../assets/svg/dot.svg'
 import './menu.css'
+import Details_screen from './Details_screen';
+import Attachment_screen from './Attachment_screen';
 function Menu() {
+    const [details, setDetails] = useState(false);
+    const handleDetails = () => {
+        setDetails(!details);
+    }
+
+    const [attachment,setAttachment]=useState(false);
+    const handleAttachment=()=>{
+        setAttachment(!attachment);
+        // setTimeout(() => {
+        //    handleDetails();
+        // }, 1000);
+    } 
+
     {
         $(document).ready(function () {
             $('.dropdown-submenu a.test').on("click", function (e) {
@@ -18,8 +33,20 @@ function Menu() {
                 <button className="btn " type="button" data-toggle="dropdown">
                     <img src={dot} /> </button>
                 <ul className="dropdown-menu">
-                    <li><a tabIndex="-1" href="#">View Details</a></li>
-                    <li><a tabIndex="-1" href="#">View Attachments</a></li>
+                    <li>
+                        <a 
+                            data-toggle="modal" data-target="#exampleModal"
+                            onClick={handleDetails} 
+                            >
+                            View Details</a>
+                        </li>
+
+                    <li>
+                        <a tabIndex="-1" href="#"
+                        data-toggle="modal" data-target="#exampleModalCenter"
+                        onClick={handleAttachment}
+                        >View Attachments</a>
+                        </li>
                     <li className="dropdown-submenu">
                         <a className="test" tabIndex="-1" href="#">Update Status <span className="caret"></span></a>
                         <ul className="dropdown-menu">
@@ -37,6 +64,8 @@ function Menu() {
                     <li><a tabIndex="-1" href="#">Delete</a></li>
 
                 </ul>
+                {details && <Details_screen handleDetails={handleDetails}/>}
+                {attachment && <Attachment_screen />}
             </div>
         </div>
     )

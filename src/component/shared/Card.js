@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import dot from '../../assets/svg/dot.svg'
 import man from '../../assets/svg/man.svg'
 import '../project/projects.css'
 import { Link } from 'react-router-dom'
 import './test.css'
 import Menu from './Menu'
+import Comment_popUp from './Comment_popUp'
 function Card(card) {
+  const [comment, setComment] = useState(false);
+  const handleComment = () => {
+    setComment(!comment);
+  }
+
   const Data = card.data
   return (
     <div>
@@ -21,7 +27,12 @@ function Card(card) {
         <p style={{ marginLeft: '6px' }} >{Data.description} </p>
         <div className='d-flex' style={{ marginLeft: '6px', alignItems: 'center', gap: '10px' }}>
           <img style={{ width: '6%' }} src={man} />
-          <a style={{ margin: 'auto 0', textDecoration: 'underline' }}>2 Comments</a>
+          <a style={{ margin: 'auto 0', textDecoration: 'underline' }}
+            data-toggle="modal" data-target="#exampleModal"
+            onClick={handleComment}
+          >
+            2 Comments</a>
+          {comment && <Comment_popUp />}
         </div>
 
         {/* <p className='time'>Est. {Data.created_at}</p> */}
