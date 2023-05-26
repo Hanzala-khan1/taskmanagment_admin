@@ -136,11 +136,11 @@ const Categories = () => {
                                     </div>
                                     <div className='top-gap'>
                                         <h5>{Category.category_title}</h5>
-                                        <div>
+                                        <div style={{display:'flex',gap:'8px'}}>
                                             <img src={Delete} />
                                             <a
                                                 onClick={() => Deletecategories(Category._id)}>Delete</a>
-                                            <img src={Edit} />
+                                            <img style={{width:'15px',height:'18px'}} src={Edit} />
                                             <a onClick={() => handleEdit(Category)} data-toggle="modal" data-target="#exampleModal">
                                                 Edit
                                             </a>

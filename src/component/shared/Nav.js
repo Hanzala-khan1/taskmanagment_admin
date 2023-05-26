@@ -15,7 +15,7 @@ function Nav() {
             <div>
                 <div>
                     <ul className='nav-ul'>
-                        <li><h1 className='logo1'> <span style={{ color: '#004064' }}>LO</span><span style={{ color: '#171C1F!important' }}>GO</span></h1></li>
+                        <li><h1 className='logo1'> <span style={{ color: '#004064' }}>D</span><span style={{ color: '#171C1F!important' }}>codax</span></h1></li>
                         <a className='active-link'><li style={{ padding: '20px' }}><Link to={"/project"}> Work </Link></li></a>
                         <li style={{ padding: '20px' }}><Link to={"/Settings"}> Settings</Link></li>
                     </ul>
