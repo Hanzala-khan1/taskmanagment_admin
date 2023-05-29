@@ -18,7 +18,7 @@ function Card(card) {
       <div className='div1 pad'>
         <div className='d-flex center justify'>
           <div className='d-flex center ' style={{ gap: '12px' }}>
-            <img src={man} />
+            <img style={{width:'35px', height:'35px'}} src={man} />
             <h5>{Data.user_id.name}</h5>
           </div>
 

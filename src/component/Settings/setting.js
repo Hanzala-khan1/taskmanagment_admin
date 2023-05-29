@@ -57,7 +57,7 @@ const Setting = () => {
                 <hr className='hr-tag'></hr>
                 <br></br>
                 <div className='width left_right'>
-                    <a className='anchor' style={{ width: "77%" }}
+                    <a href='/notification' className='anchor' style={{ width: "77%" }}
                     >Notification</a>
                     <img style={{ width: "20px" }} src={on_Off} />
                 </div>

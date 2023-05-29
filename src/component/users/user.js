@@ -12,7 +12,7 @@ import UserData from './userData'
 const User = () => {
     let users = [
         {
-            name: "Zeshan",
+            name: "Zeeshan",
             email: "zeeshankha@gmail.com",
             phone: "123456",
             status: 'Active',

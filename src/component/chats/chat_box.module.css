@@ -16,7 +16,7 @@
     white-space: nowrap;
     display: flex;
     gap: 10px;
-    margin-left: 4rem;
+    margin-left: 2rem;
     margin-top: 3rem;
 }
 
@@ -36,7 +36,7 @@
     float: right;
     display: flex;
     gap: 10px;
-    margin-right: 4rem;
+    margin-right: 2rem;
     align-items: flex-start;
     justify-content: end;
 }
@@ -56,7 +56,6 @@
 
 .type_box{
     position: fixed;
-    /* bottom: 20px; */
     overflow: hidden;
     padding: 20px;
     margin: 0px auto;

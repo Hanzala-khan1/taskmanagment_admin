@@ -8,6 +8,7 @@ import Categories from './component/categories/categories';
 import User from './component/users/user';
 import Chats from './component/chats/chats';
 import Setting from './component/Settings/setting';
+import Notification from './component/shared/Notification';
 import Setting_popUp from './component/Settings/Setting_popUp';
 
 function App() {
@@ -74,6 +75,9 @@ function App() {
                 <Setting />
               </ProtectedRoute>
             }></Route>
+            <Route path='/notification'
+            element={<Notification />} >
+            </Route>
             
 
         </Routes>

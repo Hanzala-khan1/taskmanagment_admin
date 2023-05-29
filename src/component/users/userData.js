@@ -15,7 +15,7 @@ export default function UserData(user) {
       <td className={css.gap}>
         <input type="checkbox" name="name1" />
         <img className={css.img_width} src={user.user.userImg} alt="User" />
-        <strong>{user.user.name}</strong>
+        <strong style={{color:'#000000'}}>{user.user.name}</strong>
       </td>
       <td>{user.user.email}</td>
       <td>{user.user.phone}</td>

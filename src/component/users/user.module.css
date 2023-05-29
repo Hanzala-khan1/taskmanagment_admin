@@ -78,6 +78,14 @@ table td,
 
 }
 
+td{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #8D8D8D;
+    line-height: 30px;
+}
 .dropdown-menu a.dropdown-item:hover {
   color: white!important;
   background-color: none!important; 
@@ -85,3 +93,13 @@ table td,
 a{
     text-decoration: none!important;
 }
+
+strong{
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+}
+

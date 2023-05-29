@@ -24,7 +24,9 @@ const Chats = () => {
                     <Lower_nav />
 
                 </div>
+                
             </div>
+            
             <br></br>
             <div className={chat.chat_main}>
 

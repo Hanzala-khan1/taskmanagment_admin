@@ -1,0 +1,40 @@
+.main_noti_div{
+    width: 100%;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.notification_heading{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 60px;
+}
+
+.head_margin{
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.inner{
+    display: flex;
+    gap: 20px;
+}
+
+.inline_class{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10rem;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.svg_size{
+    width: 20px;
+    height: 18px;
+}
+
+.hr_space{
+    margin-right: 9.5rem;
+}

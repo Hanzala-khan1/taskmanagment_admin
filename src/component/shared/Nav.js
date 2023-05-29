@@ -6,27 +6,49 @@ import arrow from '../../assets/svg/arrow.svg'
 import '../project/projects.css'
 import { Link } from 'react-router-dom'
 function Nav() {
-    const [dropdown,setDropdown]= useState(false)
-    const handlDropdown=()=>{
-        setDropdown(!dropdown)
-    }
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleHover = () => {
+        setIsOpen(true);
+    };
+
+    const handleLeave = () => {
+        setIsOpen(false);
+    };
     return (
         <div>
             <div>
                 <div>
                     <ul className='nav-ul'>
-                        <li><h1 className='logo1'> <span style={{ color: '#004064' }}>D</span><span style={{ color: '#171C1F!important' }}>codax</span></h1></li>
-                        <a className='active-link'><li style={{ padding: '20px' }}><Link to={"/project"}> Work </Link></li></a>
-                        <li style={{ padding: '20px' }}><Link to={"/Settings"}> Settings</Link></li>
+                        <li className='nav_heading'>
+                            <h1 className='logo1'> 
+                            <span style={{ color: '#004064' }}>D</span><span style={{ color: '#171C1F!important' }}>codax</span></h1>
+                        </li>
+                        <a className='active-link' style={{color:'rgba(0, 0, 0, 0.38)'}}>
+                            <li className='nav_heading' style={{ padding: '22px 30px 5px 35px' }}><Link to={"/project"}> Work </Link></li></a>
+                        <li className='nav_heading' 
+                        style={{ padding: '22px 30px 5px 15px'}}><Link to={"/Settings"} style={{color:'rgba(0, 0, 0, 0.38)'}}> Settings</Link></li>
                     </ul>
                     <ul className='nav-li' style={{ alignItems: 'center' }}>
                         <li style={{ padding: '20px' }}><img src={search} /></li>
-                        <li style={{ padding: '20px' }}><img src={notification} /></li>
-                        <li onClick={handlDropdown} style={{ padding: '20px' }}><img src={man} />
-                        <ul className="dropdown-menu">
-                                <li><a href="#" data-hover=" ">one</a></li>
-                                <li><a href="3" data-hover=" ">two</a></li>
-                            </ul>
+                        <li style={{ padding: '20px' }}>
+                            <a href="/notification">
+                                <img src={notification} /></a></li>
+                        <li onMouseEnter={handleHover}
+                            onMouseLeave={handleLeave}
+                            style={{ padding: '20px' }}
+                        ><img style={{ width: '40px', height: '40px' }} src={man}
+                            className="dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            />
+                            <div
+                                style={{ textAlign: 'center' }}
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton">
+                                <a className="dropdown-item" href="#action1">Change Profile Picture</a>
+                                <a className="dropdown-item" href="#action2">Logout</a>                            </div>
                         </li>
                         <li style={{ padding: '20px' }}><img src={arrow} /></li>
                     </ul>
