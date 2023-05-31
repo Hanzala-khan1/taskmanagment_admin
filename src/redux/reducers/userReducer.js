@@ -3,7 +3,6 @@ const storedUser = JSON.parse(localStorage.getItem("user"));
 if (storedUser) {
     // User data is stored in the local storage
     const user = storedUser;
-    console.log("hhhhhhhhhh", user)
     // Perform actions with the user data
 } else {
     console.log("error ha ")

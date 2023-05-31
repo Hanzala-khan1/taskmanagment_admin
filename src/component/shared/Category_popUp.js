@@ -78,10 +78,22 @@ function Category_popUp(probs) {
               </div>
               <br></br>
               <div style={{ textAlign: 'center' }}>
-                <input type="name" placeholder={editCategory === true ? "Update Category" : "Add Category"} className='inputs'></input>
+                <input type="name"
+                  placeholder={editCategory === true ? (`${Category.category_title}`) : ("Add Category")}
+                  className='inputs'
+                  value={AddcategoryValue}
+                  onChange={handleChange}
+                ></input>
                 <br></br>
                 <br></br>
-                <input type="submit" value={editCategory === true ? "Update Category" : "Add Category"} className='inputss'></input>
+                <input type="submit"
+                  value={editCategory === true ? "Update Category" : "Add Category"}
+                  className='inputss'
+                  onClick={editCategory === true ? handleEditCategory : handleAddCategory}
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  aria-hidden="true"
+                ></input>
               </div>
             </div>
 

@@ -7,29 +7,7 @@ import dot from '../../assets/svg/dot.svg';
 import img from '../../assets/svg/img.svg';
 import myImg from '../../assets/svg/Myimage.png.svg';
 
-function Attachment_screen() {
-    const type = [
-        {
-            "filename": "myImage",
-            "path": 'https://unsplash.com/photos/y44xv-A5syg',
-            "type": 'image'
-        },
-        {
-            "filename": "pdf file",
-            "path": 'https://www.africau.edu/images/default/sample.pdf',
-            "type": 'pdf'
-        },
-        {
-            "filename": "myImage",
-            "path": 'https://unsplash.com/photos/y44xv-A5syg',
-            "type": 'image'
-        },
-        {
-            "filename": "pdf file",
-            "path": 'https://www.africau.edu/images/default/sample.pdf',
-            "type": 'pdf'
-        }
-    ];
+function Attachment_screen({ data, handleAttachment }) {
 
     return (
         <div>
@@ -45,52 +23,72 @@ function Attachment_screen() {
                             </button>
                         </div>
                         <div className="modal-body row" style={{ marginLeft: '2rem', marginRight: '4rem' }}>
-                            {type.map((item, index) => (
-                                <div className="col-12 col-md-6 col-lg-3" key={index}>
-                                    <div className="pdf-div">
-                                        {item.type === 'image' ? (
-                                            <>
-                                                <img src={img} alt="Image" />
-                                                <a href={item.path} target="_blank" rel="noopener noreferrer">
-                                                    <img src={myImg} alt="My Image" />
-                                                </a>
-                                                <div class="dropdown">
-                                                    <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <img src={dot} alt="Dot" />
-                                                    </button>
-                                                    <div class="dropdown-menu"
-                                                     aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item view-option" href={item.path}>View</a>
-                                                        <a class="dropdown-item delete-option" href="#">Delete</a>
+                            {data.length > 0 ?
+                                (data.map((item, index) => (
+                                    <div className="col-12 col-md-6 col-lg-3" key={index}>
+                                        <div className="pdf-div">
+                                            {item.type === 'image' ? (
+                                                <>
+                                                    <img src={img} alt="Image" />
+                                                    <a href={item.path} target="_blank" rel="noopener noreferrer">
+                                                        <p>{item.filename}</p>
+                                                    </a>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <img src={dot} alt="Dot" />
+                                                        </button>
+                                                        <div class="dropdown-menu"
+                                                            aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item view-option" href={item.path}>View</a>
+                                                            <a class="dropdown-item delete-option" href="#">Delete</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <img src={pdf} alt="PDF" />
-                                                <a href={item.path} target="_blank" rel="noopener noreferrer">
-                                                    <img src={attach} alt="Attachment" />
-                                                </a>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <img src={pdf} alt="PDF" />
+                                                    <a href={item.path} target="_blank" rel="noopener noreferrer">
+                                                        <p>{item.filename}</p>
+                                                    </a>
 
-                                                <div class="dropdown">
-                                                    <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <img src={dot} alt="Dot" />
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item view-option" href={item.path}>View</a>
-                                                        <a class="dropdown-item delete-option" href="#">Delete</a>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <img src={dot} alt="Dot" />
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item view-option" href={item.path}>View</a>
+                                                            <a class="dropdown-item delete-option" href="#">Delete</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
 
-                                            </>
-                                        )}
+
+                                                </>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                )))
+                                : (
+                                    <div>
+                                        <div className='div1 pad' style={{ height: "100%", width: "40vw" }}>
+                                            <div className='d-flex center justify'>
+                                                <div className='d-flex center ' style={{ gap: '12px' }}>
+
+                                                    <h5>No available attachments to show </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                         </div>
                         <div style={{ textAlign: 'center' }}>
-                            <button className='back-button' type='button'>Back to Project</button>
+                            <button
+                                className='back-button '
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                aria-hidden="true"
+                                type='button'
+                                onClick={() => handleAttachment()}
+                            >Back to Project</button>
                         </div>
                     </div>
                 </div>

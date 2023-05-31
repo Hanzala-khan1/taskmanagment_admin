@@ -32,7 +32,7 @@ const Categories = () => {
     };
     useEffect(() => {
         getcategories()
-    })
+    }, [])
     const getcategories = async () => {
         try {
             const res = await axios({
@@ -49,56 +49,18 @@ const Categories = () => {
             console.log(err)
         }
     }
-    const Addcategories = async () => {
+    const Deletecategories = async (id) => {
+
         try {
             const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/addcategory`,
-                data: {
-                    category_title: categoriesdata
-                },
+                method: 'delete',
+                url: `${API_HOST}/category/deletecategory/${id}`,
+                data: {},
                 headers: {
-                    "Content-Type": '',
                     token: token
                 }
             })
-            setCategories(res.data.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    const Deletecategories = async () => {
-        try {
-            const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/deletecategory`,
-                data: {
-                    category_title: categoriesdata
-                },
-                headers: {
-                    "Content-Type": '',
-                    token: token
-                }
-            })
-            setCategories(res.data.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    const Updatecategories = async () => {
-        try {
-            const res = await axios({
-                method: 'get',
-                url: `${API_HOST}/category/updatecategory`,
-                data: {
-                    category_title: categoriesdata
-                },
-                headers: {
-                    "Content-Type": '',
-                    token: token
-                }
-            })
-            setCategories(res.data.data)
+            getcategories()
         } catch (err) {
             console.log(err)
         }
@@ -136,11 +98,11 @@ const Categories = () => {
                                     </div>
                                     <div className='top-gap'>
                                         <h5>{Category.category_title}</h5>
-                                        <div style={{display:'flex',gap:'8px'}}>
+                                        <div style={{ display: 'flex', gap: '8px' }}>
                                             <img src={Delete} />
                                             <a
                                                 onClick={() => Deletecategories(Category._id)}>Delete</a>
-                                            <img style={{width:'15px',height:'18px'}} src={Edit} />
+                                            <img style={{ width: '15px', height: '18px' }} src={Edit} />
                                             <a onClick={() => handleEdit(Category)} data-toggle="modal" data-target="#exampleModal">
                                                 Edit
                                             </a>

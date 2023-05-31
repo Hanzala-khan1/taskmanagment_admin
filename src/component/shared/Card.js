@@ -13,12 +13,13 @@ function Card(card) {
   }
 
   const Data = card.data
+
   return (
     <div>
       <div className='div1 pad'>
         <div className='d-flex center justify'>
           <div className='d-flex center ' style={{ gap: '12px' }}>
-            <img style={{width:'35px', height:'35px'}} src={man} />
+            <img style={{ width: '35px', height: '35px' }} src={Data.user_id.image} />
             <h5>{Data.user_id.name}</h5>
           </div>
 
@@ -26,18 +27,18 @@ function Card(card) {
         </div>
         <p style={{ marginLeft: '6px' }} >{Data.description} </p>
         <div className='d-flex' style={{ marginLeft: '6px', alignItems: 'center', gap: '10px' }}>
-          <img style={{ width: '6%' }} src={man} />
+          <img style={{ width: '6%' }} src={Data.user_id.image} />
           <a style={{ margin: 'auto 0', textDecoration: 'underline' }}
             data-toggle="modal" data-target="#exampleModal"
             onClick={handleComment}
           >
-            2 Comments</a>
-          {comment && <Comment_popUp />}
+            {Data.Comments.length} Comments</a>
+          {comment && <Comment_popUp data={Data.Comments} />}
         </div>
 
         {/* <p className='time'>Est. {Data.created_at}</p> */}
         {/* <br></br> */}
-        <a style={{ float: 'right' }}> <Menu /> </a>
+        <a style={{ float: 'right' }}> <Menu data={Data} /> </a>
 
       </div>
     </div>

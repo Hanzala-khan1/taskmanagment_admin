@@ -4,19 +4,16 @@ import dot from '../../assets/svg/dot.svg'
 import './menu.css'
 import Details_screen from './Details_screen';
 import Attachment_screen from './Attachment_screen';
-function Menu() {
+function Menu({ data }) {
     const [details, setDetails] = useState(false);
     const handleDetails = () => {
         setDetails(!details);
     }
 
-    const [attachment,setAttachment]=useState(false);
-    const handleAttachment=()=>{
+    const [attachment, setAttachment] = useState(false);
+    const handleAttachment = () => {
         setAttachment(!attachment);
-        // setTimeout(() => {
-        //    handleDetails();
-        // }, 1000);
-    } 
+    }
 
     {
         $(document).ready(function () {
@@ -34,19 +31,19 @@ function Menu() {
                     <img src={dot} /> </button>
                 <ul className="dropdown-menu">
                     <li>
-                        <a 
+                        <a
                             data-toggle="modal" data-target="#exampleModal"
-                            onClick={handleDetails} 
-                            >
+                            onClick={handleDetails}
+                        >
                             View Details</a>
-                        </li>
+                    </li>
 
                     <li>
                         <a tabIndex="-1" href="#"
-                        data-toggle="modal" data-target="#exampleModalCenter"
-                        onClick={handleAttachment}
+                            data-toggle="modal" data-target="#exampleModalCenter"
+                            onClick={handleAttachment}
                         >View Attachments</a>
-                        </li>
+                    </li>
                     <li className="dropdown-submenu">
                         <a className="test" tabIndex="-1" href="#">Update Status <span className="caret"></span></a>
                         <ul className="dropdown-menu">
@@ -64,8 +61,8 @@ function Menu() {
                     <li><a tabIndex="-1" href="#">Delete</a></li>
 
                 </ul>
-                {details && <Details_screen handleDetails={handleDetails}/>}
-                {attachment && <Attachment_screen />}
+                {details && <Details_screen handleDetails={handleDetails} data={data} />}
+                {attachment && <Attachment_screen data={data.files} handleAttachment={handleAttachment} />}
             </div>
         </div>
     )

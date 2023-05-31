@@ -37,7 +37,7 @@ function Projects() {
           token: token
         }
       })
-      console.log("completed", res.data.data)
+
       setProjectscompleted(res.data.data)
     } catch (err) {
       console.log(err)
@@ -53,7 +53,6 @@ function Projects() {
           token: token
         }
       });
-      console.log("todo", res.data.data)
       setProjectstodo(res.data.data)
     } catch (err) {
       console.log(err)
@@ -69,7 +68,7 @@ function Projects() {
           token: token
         }
       });
-      console.log("newprojects", res.data.data)
+
       setProjectsall(res.data.data)
     } catch (err) {
       console.log(err)
@@ -85,7 +84,7 @@ function Projects() {
           token: token
         }
       });
-      console.log("pending", res.data.data)
+
       setProjectspending(res.data.data)
     } catch (err) {
       console.log(err)

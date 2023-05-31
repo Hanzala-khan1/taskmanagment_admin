@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import css from './user.module.css';
 import './userButton.css';
+import Dot from '../../assets/svg/dot.svg'
+import Delete from '../../assets/svg/delete.png'
 import Setting_popUp from '../Settings/Setting_popUp';
 
-export default function UserData(user) {
+export default function UserData({ user }) {
+  console.log("datadatdatdatadatdatada", user)
+
   const [change, setChange] = useState(true);
 
   const handleChange = () => {
@@ -14,18 +18,18 @@ export default function UserData(user) {
     <tr>
       <td className={css.gap}>
         <input type="checkbox" name="name1" />
-        <img className={css.img_width} src={user.user.userImg} alt="User" />
-        <strong style={{color:'#000000'}}>{user.user.name}</strong>
+        <img className={css.img_width} src={user.image} alt="User" />
+        <strong style={{ color: '#000000' }}>{user.name}</strong>
       </td>
-      <td>{user.user.email}</td>
-      <td>{user.user.phone}</td>
+      <td>{user.email}</td>
+      <td>{user.phone}</td>
       <td>
-        <span className="span1">{user.user.status}</span>
+        <span className="span1">active</span>
       </td>
-      <td>{user.user.Duration}</td>
-      <td><img src={user.user.deleteImg} alt="Delete" /></td>
-      <td className="action">
-        <div className="dropdown"  
+      <td>{user.created_at}</td>
+      <td><img src={Delete} alt="Delete" /></td>
+      {/* <td className="action">
+        <div className="dropdown"
         >
           <a
             href="#"
@@ -36,13 +40,13 @@ export default function UserData(user) {
             aria-expanded="false"
             onClick={handleChange}
           >
-            <img src={user.user.dotImg} alt="Dropdown" />
+            <img src={Dot} alt="Dropdown" />
           </a>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" 
-          style={{ backgroundColor: '#282828', padding:"10px", textAlign:'center'}}>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"
+            style={{ backgroundColor: '#282828', padding: "10px", textAlign: 'center' }}>
             <a
               className="hov"
-              style={{ color:'#ffffff' }}
+              style={{ color: '#ffffff' }}
               data-toggle="modal"
               data-target="#exampleModal"
               onClick={handleChange}
@@ -50,13 +54,13 @@ export default function UserData(user) {
               Change Password
             </a>
             <br></br>
-            <span className="" style={{color:'#ffffff'}} href="#">
+            <span className="" style={{ color: '#ffffff' }} href="#">
               Additional Option
             </span>
           </div>
         </div>
-        {change && <Setting_popUp editCategory={true} />}
-      </td>
+        {change && <Setting_popUp editCategory={true} />} */}
+      {/* </td> */}
     </tr>
   );
 }

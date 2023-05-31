@@ -23,7 +23,7 @@ function Admin_Page() {
       (prev) => ({ ...prev, [e.target.id]: e.target.value })
     )
   }
-  console.log(loginform)
+
   const Loginclick = async (e) => {
     e.preventDefault();
     try {
