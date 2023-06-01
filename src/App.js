@@ -45,21 +45,21 @@ function App() {
             element={
               <ProtectedRoute>
                 <Quick_task />
-               </ProtectedRoute>
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/categories'
             element={
               <ProtectedRoute>
                 <Categories />
-                </ProtectedRoute>
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/chats'
             element={
               <ProtectedRoute>
                 <Chats />
-               </ProtectedRoute>
+              </ProtectedRoute>
             }></Route>
           <Route
             path='/user'
@@ -75,10 +75,10 @@ function App() {
                 <Setting />
               </ProtectedRoute>
             }></Route>
-            <Route path='/notification'
+          <Route path='/notification'
             element={<Notification />} >
-            </Route>
-            
+          </Route>
+
 
         </Routes>
       </BrowserRouter>
