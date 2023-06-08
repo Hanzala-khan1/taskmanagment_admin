@@ -37,6 +37,8 @@
     display: flex;
 } */
 .img_width{
+    border-radius: 50%;
+    height: 40px;
     width: 40px;
     margin-left: 2.5rem;
     margin-right: 2rem;
@@ -91,7 +93,7 @@ td{
   background-color: none!important; 
 }
 a{
-    text-decoration: none!important;
+    text-decoration: none;
 }
 
 strong{

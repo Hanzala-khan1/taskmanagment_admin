@@ -11,13 +11,20 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { API_HOST } from '../../assets/dataconfig/dataconfig'
+import Review_projects from '../shared/Review_projects'
+import Pending from '../shared/Pending'
+import Revision from '../shared/Revision'
+import Pending_3rdparty from '../shared/Pending_3rdparty'
 function Projects() {
   const [projectstodo, setProjectstodo] = useState([]);
   const [projectscompleted, setProjectscompleted] = useState([]);
   const [projectspending, setProjectspending] = useState([]);
   const [projectsall, setProjectsall] = useState([]);
-
-  const user = useSelector(state => state.loginUser.user)
+  const [projectsreview, setProjectsreview] = useState([]);
+  const [pendingclientreview, setpendingclientreview] = useState([]);
+  const [projectsrevision, setProjectsrevision]= useState([]);
+  const [pending3rdparty, setPending3rdparty]= useState([]);
+  const user = useSelector(state => state.loginUser.user);
   const token = user.token
 
   useEffect(() => {
@@ -126,16 +133,16 @@ function Projects() {
           </div>
           <div className="carousel-item" >
             <div>
-              <Test data={projectsall} />
+              <Review_projects data={projectsreview} />
             </div>
             <div>
-              <In_pogress data={projectspending} />
+              <Pending data={pendingclientreview} />
             </div>
             <div>
-              <To_do data={projectstodo} />
+              <Revision data={projectsrevision} />
             </div>
             <div>
-              <Completed data={projectscompleted} />
+              <Pending_3rdparty data={pending3rdparty} />
             </div>
           </div>
         </div>

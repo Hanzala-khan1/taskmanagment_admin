@@ -55,3 +55,23 @@ p{
     margin-bottom: 2rem;
     margin-top: 0!important;
 }  
+
+.delete-button{
+    border: none;
+    margin-right: 10px;
+    background: #FF0000;
+    border-radius: 5px;
+    align-items: flex-start;
+    color: #FFFFFF;
+padding: 13px 54px;
+}
+
+.upload-button{
+    border: none;
+    color: #FFFFFF;
+    margin-left: 10px;
+    background: #252525;
+    border-radius: 5px;
+    align-items: flex-start;
+padding: 13px 54px;
+}

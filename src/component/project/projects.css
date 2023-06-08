@@ -216,3 +216,19 @@ hr{
     line-height: 24px;
     color: rgba(0, 0, 0, 0.38);
 }
+
+.active-link {
+    color: lightblue;
+    text-decoration: underline;
+  }
+
+  .list li.active-link a {
+    text-decoration: underline;
+  }  
+  
+  .seach_bar{
+    border: 1px solid #EDEEF1;
+    width: 350px;
+    height: 45px;
+    border-radius: 5px;
+  }

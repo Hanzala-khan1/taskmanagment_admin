@@ -11,11 +11,19 @@ import Nav from '../shared/Nav'
 import { useDispatch, useSelector } from 'react-redux'
 import { API_HOST } from '../../assets/dataconfig/dataconfig'
 import axios from 'axios'
+import Review_projects from '../shared/Review_projects'
+import Pending from '../shared/Pending'
+import Revision from '../shared/Revision'
+import Pending_3rdparty from '../shared/Pending_3rdparty'
 function Quick_task() {
   const [subtaskTodo, setSubtaskTodo] = useState([]);
   const [subtaskCompleted, setSubtaskCompleted] = useState([]);
   const [subtaskPending, setSubtaskPending] = useState([]);
   const [subtaskAll, setSubtaskAll] = useState([]);
+  const [taskreview, setTaskreview] = useState([]);
+  const [taskclientreview, setTaskclientreview] = useState([]);
+  const [taskrevision, setTasksrevision]= useState([]);
+  const [task3rdparty, setTask3rdparty]= useState([]);
   const user = useSelector(state => state.loginUser.user)
   const token = user.token
   const dispatch = useDispatch();
@@ -128,16 +136,16 @@ function Quick_task() {
           </div>
           <div className="carousel-item">
             <div>
-              <Test data={subtaskAll} />
+              <Review_projects data={taskreview} />
             </div>
             <div>
-              <In_pogress data={subtaskPending} />
+              <Pending data={taskclientreview} />
             </div>
             <div>
-              <To_do data={subtaskTodo} />
+              <Revision data={taskrevision} />
             </div>
             <div>
-              <Completed data={subtaskCompleted} />
+              <Pending_3rdparty data={task3rdparty} />
             </div>
           </div>
         </div>
