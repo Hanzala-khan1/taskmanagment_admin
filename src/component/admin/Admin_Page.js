@@ -8,6 +8,9 @@ import half from '../../assets/svg/half.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { Adduser } from '../../redux/actions/userlogin';
 import { API_HOST } from '../../assets/dataconfig/dataconfig';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Admin_Page() {
 
   const [error, setError] = useState(false)
@@ -23,15 +26,26 @@ function Admin_Page() {
       (prev) => ({ ...prev, [e.target.id]: e.target.value })
     )
   }
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      Loginclick(event);
+    }
+  };
+
 
   const Loginclick = async (e) => {
     e.preventDefault();
     try {
       const { email, password } = loginform
       if (!email || !password) {
-        setError(true);
-        setErrorvalue("Please fill in both email and password fields.");
+        // setError(true);
+        // setErrorvalue("Please fill in both email and password fields.");
+        // if (error) {
+        toast.error(`Please fill in both email and password fields.`, { position: toast.POSITION.TOP_CENTER });
         return;
+        // }
+        // setError(false);
       }
       const res = await axios({
         method: 'post',
@@ -47,9 +61,13 @@ function Admin_Page() {
       dispatch(Adduser(res.data.data))
       navigate("/project")
     } catch (err) {
-      setError(true)
+      // setError(true)
       // setErrorvalue(err.response.data.message)
-      console.log(err)
+      // if (error) {
+      toast.error(`invalid email or password`, { position: toast.POSITION.TOP_CENTER });
+      return;
+      // }
+      // setError(false);
     }
   }
 
@@ -64,28 +82,34 @@ function Admin_Page() {
       <div>
         <p className='p'>Login to continue using </p>
       </div>
-      {error && <div className='p' style={{ color: "red" }}>{errorvalue}</div>}
       <div className='main-div'>
         <div>
           <label className="name-label  text-center">
             <img className="icon " src={email} />
             <input
+              onKeyPress={handleKeyPress}
               type="text"
               id="email"
               value={loginform.email}
               onChange={loginformchange}
-              placeholder="Email" />
+              placeholder="Email"
+              required
+            />
+
           </label>
         </div>
         <div>
           <label className="name-label  text-center">
             <img className="icon" src={lock} />
             <input
+              onKeyPress={handleKeyPress}
               type="password"
               id="password"
               value={loginform.password}
               onChange={loginformchange}
-              placeholder="Password" />
+              placeholder="Password"
+              required
+            />
           </label>
         </div>
       </div>
@@ -94,6 +118,7 @@ function Admin_Page() {
       <label className='login-button'>
         <button onClick={Loginclick}>Login</button>
       </label>
+      <ToastContainer />
 
     </div>
   )

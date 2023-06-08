@@ -20,7 +20,7 @@ function Nav() {
 
     const user = useSelector(state => state.loginUser.user)
     const token = user.token
-    const Profile = user.info
+    const Profile = user.info.image
 
     const dispatch = useDispatch()
     const navigate = useNavigate();

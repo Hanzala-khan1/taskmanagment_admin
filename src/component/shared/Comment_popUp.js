@@ -7,7 +7,7 @@ function Comment_popUp({ data }) {
 
     return (
         <div style={{ overflowY: 'hidden' }}>
-            <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModalComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog custom-modal-dialog" role="document" style={{ top: '54px', width: '100%' }} >
                     <div className="modal-content" style={{ width: '100%' }} >
                         <button style={{ marginLeft: '97%' }} type="button" className="close" data-dismiss="modal" aria-label="Close">

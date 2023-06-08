@@ -6,7 +6,6 @@ import Delete from '../../assets/svg/delete.png'
 import Setting_popUp from '../Settings/Setting_popUp';
 
 export default function UserData({ user }) {
-  console.log("datadatdatdatadatdatada", user)
 
   const [change, setChange] = useState(true);
 

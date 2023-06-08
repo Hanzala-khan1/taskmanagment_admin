@@ -2,6 +2,15 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
+/* toastStyles.css */
+.custom-toast-container {
+  /* Add your custom styles here */
+  background-color: #333;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  padding: 10px;
+}
 
 .logo {
   /* position: absolute; */

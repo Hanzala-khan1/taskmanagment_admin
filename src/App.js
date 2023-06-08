@@ -12,6 +12,17 @@ import Notification from './component/shared/Notification';
 import Setting_popUp from './component/Settings/Setting_popUp';
 
 function App() {
+  const ProtectedRoutelogin = ({ children }) => {
+    // Get user data from localStorage
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const user = storedUser;
+
+    if (user) {
+      return <Navigate to="/project" />;
+    }
+    return children;
+  };
+
 
   const ProtectedRoute = ({ children }) => {
     // Get user data from localStorage
@@ -31,10 +42,14 @@ function App() {
 
           <Route
             path='/'
-            element={<Admin_Page />}>
+            element={
+              <ProtectedRoutelogin>
+                <Admin_Page />
+              </ProtectedRoutelogin>}>
           </Route>
           <Route
             path="/project"
+            exact
             element={
               <ProtectedRoute>
                 <Projects />

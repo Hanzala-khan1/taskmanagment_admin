@@ -30,6 +30,7 @@ const User = () => {
                 token: token
             }
         })
+        console.log("ghafdaghdf------------dasd", res.data.data)
         setUserdata(res.data.data)
     }
     return (

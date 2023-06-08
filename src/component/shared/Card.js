@@ -18,7 +18,7 @@ function Card(card) {
       <div className='div1 pad'>
         <div className='d-flex center justify'>
           <div className='d-flex center ' style={{ gap: '12px' }}>
-            <img style={{ width: '35px', height: '35px', borderRadius:'50%' }} src={Data.user_id.image} />
+            <img style={{ width: '35px', height: '35px', borderRadius: '50%' }} src={Data.user_id.image} />
             <h5>{Data.user_id.name}</h5>
           </div>
 
@@ -26,9 +26,9 @@ function Card(card) {
         </div>
         <p style={{ marginLeft: '6px' }} >{Data.description} </p>
         <div className='d-flex' style={{ marginLeft: '6px', alignItems: 'center', gap: '10px' }}>
-          <img style={{ width: '20px', height:'20px',borderRadius:'50%' }} src={Data.user_id.image} />
+          {/* <img style={{ width: '20px', height:'20px',borderRadius:'50%' }} src={Data.user_id.image} /> */}
           <a style={{ margin: 'auto 0', textDecoration: 'underline' }}
-            data-toggle="modal" data-target="#exampleModal"
+            data-toggle="modal" data-target="#exampleModalComment"
             onClick={handleComment}
           >
             {Data.Comments.length} Comments</a>
