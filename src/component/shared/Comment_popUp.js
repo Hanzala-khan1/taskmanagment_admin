@@ -58,10 +58,7 @@ function Comment_popUp({ data }) {
                                 </div>
                             )}
                         </div>
-
-                        <div className="modal-footer">
-
-                        </div>
+                        <div className="modal-footer"></div>
                     </div>
                 </div>
             </div>

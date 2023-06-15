@@ -15,6 +15,8 @@ import Review_projects from '../shared/Review_projects'
 import Pending from '../shared/Pending'
 import Revision from '../shared/Revision'
 import Pending_3rdparty from '../shared/Pending_3rdparty'
+import { isAccordionItemSelected } from 'react-bootstrap/esm/AccordionContext'
+import Spinner from '../shared/spinner/spinner'
 function Projects() {
   const [projectstodo, setProjectstodo] = useState([]);
   const [projectscompleted, setProjectscompleted] = useState([]);
@@ -22,8 +24,11 @@ function Projects() {
   const [projectsall, setProjectsall] = useState([]);
   const [projectsreview, setProjectsreview] = useState([]);
   const [pendingclientreview, setpendingclientreview] = useState([]);
-  const [projectsrevision, setProjectsrevision]= useState([]);
-  const [pending3rdparty, setPending3rdparty]= useState([]);
+  const [projectsrevision, setProjectsrevision] = useState([]);
+  const [pending3rdparty, setPending3rdparty] = useState([]);
+
+  const [isloading, setIsloading] = useState(false);
+
   const user = useSelector(state => state.loginUser.user);
   const token = user.token
 
@@ -35,6 +40,7 @@ function Projects() {
   }, [])
 
   const Completedprojects = async () => {
+    setIsloading(true)
     try {
       const res = await axios({
         method: 'get',
@@ -46,6 +52,7 @@ function Projects() {
       })
 
       setProjectscompleted(res.data.data)
+      setIsloading(false)
     } catch (err) {
       console.log(err)
     }
@@ -66,6 +73,7 @@ function Projects() {
     }
   }
   const Newprojects = async () => {
+    setIsloading(true)
     try {
       const res = await axios({
         method: 'get',
@@ -77,6 +85,7 @@ function Projects() {
       });
 
       setProjectsall(res.data.data)
+      setIsloading(false)
     } catch (err) {
       console.log(err)
     }
@@ -100,11 +109,12 @@ function Projects() {
 
   return (
     <div>
+      {isloading && <Spinner />}
       <div>
         <Nav />
       </div>
       <div>
-        <Lower_nav />
+        <Lower_nav data={"Projects"} />
       </div>
       <br></br>
       <br></br>

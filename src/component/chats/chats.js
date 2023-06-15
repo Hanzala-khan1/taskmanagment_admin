@@ -8,7 +8,7 @@ import Chat_box from './Chat_box'
 const Chats = () => {
     const user = [
         {
-            'img':  man ,
+            'img': man,
             'name': "Zeeshan",
             "msg": 'Hello there?',
             "time": '9.00 PM'
@@ -21,12 +21,10 @@ const Chats = () => {
                     <Nav />
                 </div>
                 <div>
-                    <Lower_nav />
-
+                    <Lower_nav data={"Chats"} />
                 </div>
-                
             </div>
-            
+
             <br></br>
             <div className={chat.chat_main}>
 
@@ -42,7 +40,7 @@ const Chats = () => {
                                     <div className={chat.list} >
                                         <img className={chat.user_image} src={item.img} />
 
-                                        <div style={{ paddingTop:'10px',paddingLeft:'10px' ,width:'100%'}} className={chat.lists} key={index}>
+                                        <div style={{ paddingTop: '10px', paddingLeft: '10px', width: '100%' }} className={chat.lists} key={index}>
 
                                             <div className={chat.user_name}>
                                                 <h5 className={chat.name_h}>{item.name}</h5>

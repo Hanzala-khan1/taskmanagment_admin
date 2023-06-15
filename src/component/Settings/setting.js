@@ -29,7 +29,7 @@ const Setting = () => {
             </div>
 
             <div className='left_right'>
-            <br></br>
+                <br></br>
                 <h2 className='heading'>Settings</h2>
                 <br></br>
                 <hr style={{ marginTop: '12rem' }} className='left_right'></hr>
@@ -47,6 +47,7 @@ const Setting = () => {
                 <br></br>
                 <div className='width left_right'>
                     <a className='anchor' style={{ width: "77%" }}
+                        data-toggle="modal" data-target="#realModal"
                         onClick={handleEmail}>Change Email</a>
                     <img style={{ width: "16px" }} src={user} />
                     {email && <Email_popUp editEmail={true} />}

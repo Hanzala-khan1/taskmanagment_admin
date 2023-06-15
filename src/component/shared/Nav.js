@@ -36,7 +36,6 @@ function Nav() {
         dispatch(Removeuser(null))
         navigate("/")
     }
-    console.log("Abc", user.info.image)
     return (
         <div>
             <div>

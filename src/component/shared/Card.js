@@ -2,27 +2,45 @@ import React, { useState } from 'react'
 import dot from '../../assets/svg/dot.svg'
 import man from '../../assets/svg/man.svg'
 import '../project/projects.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './test.css'
 import Menu from './Menu'
 import Comment_popUp from './Comment_popUp'
+
+
 function Card(card) {
+  /////////////////////////
   const [comment, setComment] = useState(false);
-  const handleComment = () => {
+  const Data = card.data
+  ///////////////////
+  const handleComment = (e) => {
     setComment(!comment);
+
+  }
+  const menuClicked = (e) => {
   }
 
-  const Data = card.data
+  const navigate = useNavigate()
+
+  // const showTask = (e) => {
+  //   e.stopPropagation()
+  //   if (Data.type === "Project") {
+  //     navigate("/project/task")
+  //   }
+  // }
+
   return (
-    <div>
+    <div >
       <div className='div1 pad'>
         <div className='d-flex center justify'>
           <div className='d-flex center ' style={{ gap: '12px' }}>
-            <img style={{ width: '35px', height: '35px', borderRadius: '50%' }} src={Data.user_id.image} />
-            <h5>{Data.user_id.name}</h5>
+            <img style={{ width: '35px', height: '35px', borderRadius: '50%' }} src={Data?.user_id?.image} />
+            <h5>{Data?.title}</h5>
           </div>
 
-          <p className={"p-high center " + (Data?.value === "High" ? "bg-pink" : (Data?.value === "Low" ? "bg-blue" : "bg-green"))}>{Data?.value}</p>
+          <p className={"p-high center " + (Data?.priority === "high" ?
+            "bg-pink" : (Data?.priority
+              === "low" ? "bg-blue" : "bg-green"))} style={{ color: "white" }}>{Data?.priority}</p>
         </div>
         <p style={{ marginLeft: '6px' }} >{Data.description} </p>
         <div className='d-flex' style={{ marginLeft: '6px', alignItems: 'center', gap: '10px' }}>
@@ -37,7 +55,7 @@ function Card(card) {
 
         {/* <p className='time'>Est. {Data.created_at}</p> */}
         {/* <br></br> */}
-        <a style={{ float: 'right' }}> <Menu data={Data} /> </a>
+        <a style={{ float: 'right' }} onClick={menuClicked}> <Menu data={Data} /> </a>
 
       </div>
     </div>

@@ -15,6 +15,9 @@ import Review_projects from '../shared/Review_projects'
 import Pending from '../shared/Pending'
 import Revision from '../shared/Revision'
 import Pending_3rdparty from '../shared/Pending_3rdparty'
+import Spinner from '../shared/spinner/spinner'
+
+
 function Quick_task() {
   const [subtaskTodo, setSubtaskTodo] = useState([]);
   const [subtaskCompleted, setSubtaskCompleted] = useState([]);
@@ -22,8 +25,9 @@ function Quick_task() {
   const [subtaskAll, setSubtaskAll] = useState([]);
   const [taskreview, setTaskreview] = useState([]);
   const [taskclientreview, setTaskclientreview] = useState([]);
-  const [taskrevision, setTasksrevision]= useState([]);
-  const [task3rdparty, setTask3rdparty]= useState([]);
+  const [taskrevision, setTasksrevision] = useState([]);
+  const [task3rdparty, setTask3rdparty] = useState([]);
+  const [isloading, setIsloading] = useState(false);
   const user = useSelector(state => state.loginUser.user)
   const token = user.token
   const dispatch = useDispatch();
@@ -35,6 +39,7 @@ function Quick_task() {
   }, [])
 
   const CompletedSubtask = async () => {
+    setIsloading(true)
     try {
       const res = await axios({
         method: 'get',
@@ -46,6 +51,7 @@ function Quick_task() {
         }
       })
       setSubtaskCompleted(res.data.data)
+      setIsloading(false)
     } catch (err) {
       console.log(err)
     }
@@ -67,6 +73,7 @@ function Quick_task() {
     }
   }
   const todoSubtask = async () => {
+    setIsloading(true)
     try {
       const res = await axios({
         method: 'get',
@@ -78,6 +85,7 @@ function Quick_task() {
         }
       })
       setSubtaskTodo(res.data.data)
+      setIsloading(false)
     } catch (err) {
       console.log(err)
     }
@@ -100,13 +108,12 @@ function Quick_task() {
   }
   return (
     <div>
-
+      {isloading && <Spinner />}
       <div>
         <Nav />
       </div>
       <div>
-        <Lower_nav />
-        <Filter />
+        <Lower_nav data={"Quick Tasks"} />
       </div>
       <br></br>
       <br></br>

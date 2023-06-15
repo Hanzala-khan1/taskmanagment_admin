@@ -10,12 +10,14 @@ import Category_popUp from '../shared/Category_popUp';
 import axios from 'axios';
 import { API_HOST, getcategories } from '../../assets/dataconfig/dataconfig';
 import { useSelector } from 'react-redux';
+import Spinner from '../shared/spinner/spinner';
 
 const Categories = () => {
   const [popup, setPopup] = useState(false);
   const [pop, setPop] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoriesdata, setCategoriesdata] = useState('');
+  const [isloading, setIsloading] = useState(false);
 
   const user = useSelector((state) => state.loginUser.user);
   const token = user.token;
@@ -36,6 +38,7 @@ const Categories = () => {
   }, []);
 
   const getcategories = async () => {
+    setIsloading(true)
     try {
       const res = await axios({
         method: 'get',
@@ -47,12 +50,14 @@ const Categories = () => {
         },
       });
       setCategories(res.data.data);
+      setIsloading(false)
     } catch (err) {
       console.log(err);
     }
   };
 
   const Deletecategories = async (id) => {
+    setIsloading(true)
     try {
       const res = await axios({
         method: 'delete',
@@ -63,6 +68,7 @@ const Categories = () => {
         },
       });
       getcategories();
+      setIsloading(false)
     } catch (err) {
       console.log(err);
     }
@@ -70,12 +76,12 @@ const Categories = () => {
 
   return (
     <div>
+      {isloading && <Spinner />}
       <div>
         <Nav />
       </div>
       <div>
-        <Lower_nav />
-        <Filter />
+        <Lower_nav data={"Add/Edit Categories"} />
       </div>
       <div>
         <div className='categories'>
@@ -89,7 +95,7 @@ const Categories = () => {
           <div className='row' style={{ marginRight: '6rem', marginLeft: '3rem', overflowY: 'hidden' }}>
             {categories.map((Category) => {
               return (
-                <div className='col-lg-3 col-md-6 col-sm-12 d-flex category' style={{ alignItems: 'center', marginRight: '35px' }}>
+                <div className='col-lg-3 col-md-6 col-sm-12 d-flex category' style={{ alignItems: 'center', marginRight: '35px' }} >
                   <div>
                     <img style={{ marginLeft: '15px', marginTop: '15px', width: '50px' }} src={web} alt='web' />
                   </div>

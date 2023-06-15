@@ -10,14 +10,14 @@ function Details_screen({ handleDetails, data }) {
     const handleComment = () => {
         setComment(!comment);
     }
-    const date = "15 Oct 22";
-    const day = date.slice(0, 2);
-    const month = date.slice(3, 6);
-    const year = date.slice(7);
+    const date = data.created_at;
+    const day = date.slice(8, 10);
+    const month = date.slice(5, 7);
+    const year = date.slice(2, 4);
 
     return (
         <div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document" style={{ width: '100%' }}>
                     <div class="modal-content" style={{ width: '100%', height: '570px' }}>
 

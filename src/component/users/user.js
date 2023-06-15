@@ -12,36 +12,54 @@ import UserData from './userData'
 import axios from 'axios'
 import { API_HOST } from '../../assets/dataconfig/dataconfig'
 import { useSelector } from 'react-redux'
+import Spinner from '../shared/spinner/spinner'
 const User = () => {
     const [userdata, setUserdata] = useState([])
+    const [selectedUsers, setSelectedUsers] = useState([]);
+    const [isloading, setIsloading] = useState(false);
+
     const user = useSelector(state => state.loginUser.user)
     const token = user.token
-
     useEffect(() => {
         getUser()
     }, [])
+    /////////////////////////////////
+    const handleUserSelection = (userId) => {
+        if (selectedUsers.includes(userId)) {
+            setSelectedUsers(selectedUsers.filter(id => id !== userId));
+        } else {
+            setSelectedUsers([...selectedUsers, userId]);
+        }
+    };
 
+    ///////////////////////////////////////////
     const getUser = async () => {
-        const res = await axios({
-            method: 'get',
-            url: `${API_HOST}/user/getAll`,
-            data: {},
-            headers: {
-                token: token
-            }
-        })
-        console.log("ghafdaghdf------------dasd", res.data.data)
-        setUserdata(res.data.data)
+        setIsloading(true)
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/user/getAll`,
+                data: {},
+                headers: {
+                    token: token
+                }
+            })
+            setUserdata(res.data.data)
+            setIsloading(false)
+        } catch (err) {
+            console.log(err)
+        }
     }
     return (
         <div>
+            {isloading && <Spinner />}
             <div>
                 <div>
                     <Nav />
                 </div>
                 <div className='middle'>
-                    <Lower_nav />
-                    <UserButtons />
+                    <Lower_nav data={"Users list"} />
+                    <UserButtons selectedUsers={selectedUsers} getUser={getUser} />
                 </div>
             </div>
             <br></br>
@@ -53,7 +71,12 @@ const User = () => {
                 <table className="table">
                     <tbody>
                         {userdata.map((user) => {
-                            return <UserData key={userdata._id} user={user} />
+                            return <UserData key={user._id}
+                                user={user}
+                                selectedUsers={selectedUsers}
+                                handleUserSelection={handleUserSelection}
+                                getUser={getUser}
+                            />
                         })}
                     </tbody>
                 </table>

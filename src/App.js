@@ -10,6 +10,8 @@ import Chats from './component/chats/chats';
 import Setting from './component/Settings/setting';
 import Notification from './component/shared/Notification';
 import Setting_popUp from './component/Settings/Setting_popUp';
+import Projectstasks from './component/ProjectTask/ProjectTask';
+import ProjectTask from './component/ProjectTask/ProjectTask';
 
 function App() {
   const ProtectedRoutelogin = ({ children }) => {
@@ -47,14 +49,8 @@ function App() {
                 <Admin_Page />
               </ProtectedRoutelogin>}>
           </Route>
-          <Route
-            path="/project"
-            exact
-            element={
-              <ProtectedRoute>
-                <Projects />
-              </ProtectedRoute>
-            }></Route>
+          <Route path="/project" element={<ProtectedRoute><Projects /></ProtectedRoute>}> </Route>
+          <Route path='/project/task' element={<ProtectedRoute><ProjectTask /></ProtectedRoute>} />
           <Route
             path='/quicktask'
             element={
