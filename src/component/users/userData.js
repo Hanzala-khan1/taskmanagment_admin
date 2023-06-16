@@ -9,14 +9,16 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../shared/spinner/spinner';
 
 export default function UserData({ user, handleUserSelection, selectedUsers, getUser }) {
-
+  const [isloading, setIsloading] = useState(false);
   const [change, setChange] = useState(true);
   ////////////////////////////////
   const userId = useSelector(state => state.loginUser.user)
   const token = userId.token
   const deleteUser = async () => {
+    setIsloading(true)
     const id = user._id
     try {
       const res = await axios({
@@ -28,6 +30,7 @@ export default function UserData({ user, handleUserSelection, selectedUsers, get
         }
       })
       getUser()
+      setIsloading(false)
       toast.error(`user Deleted`, { position: toast.POSITION.TOP_CENTER });
       return;
     } catch (err) {
@@ -43,6 +46,7 @@ export default function UserData({ user, handleUserSelection, selectedUsers, get
           checked={selectedUsers.includes(user._id)}
           onChange={() => handleUserSelection(user._id)}
         />
+        {isloading && <Spinner />}
         <img className={css.img_width} src={user.image} alt="User" />
         <strong style={{ color: '#000000' }}>{user.name}</strong>
       </td>

@@ -17,17 +17,10 @@ function Card(card) {
     setComment(!comment);
 
   }
+
   const menuClicked = (e) => {
+    // e.stopPropagation()
   }
-
-  const navigate = useNavigate()
-
-  // const showTask = (e) => {
-  //   e.stopPropagation()
-  //   if (Data.type === "Project") {
-  //     navigate("/project/task")
-  //   }
-  // }
 
   return (
     <div >

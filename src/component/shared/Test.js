@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 import './test.css'
 import Card from './Card'
 import Task_details from './Task_details'
-function Test(data) {
-    const card_ALL = data.data
+function Test({ data, item }) {
+    const card_ALL = data
     return (
         <div>
 
@@ -16,7 +16,7 @@ function Test(data) {
                     <div className="card">
                         <div className="card-body" >
                             <div className='d-flex h-p justify-space'>
-                                <h6 style={{ float: 'left', marginTop: '0' }}>New Projects</h6>
+                                <h6 style={{ float: 'left', marginTop: '0' }}>New {item}</h6>
                                 <p style={{ float: 'right' }}>View All</p>
                             </div>
                         </div>

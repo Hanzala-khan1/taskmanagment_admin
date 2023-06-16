@@ -23,11 +23,13 @@ function Quick_task() {
   const [subtaskCompleted, setSubtaskCompleted] = useState([]);
   const [subtaskPending, setSubtaskPending] = useState([]);
   const [subtaskAll, setSubtaskAll] = useState([]);
-  const [taskreview, setTaskreview] = useState([]);
-  const [taskclientreview, setTaskclientreview] = useState([]);
-  const [taskrevision, setTasksrevision] = useState([]);
-  const [task3rdparty, setTask3rdparty] = useState([]);
+  const [readyforreview, setReadyforreview] = useState([]);
+  const [pendingclientreview, setPendingclientreview] = useState([]);
+  const [revision, setRevision] = useState([]);
+  const [pendingthirdpartyaction, setPendingthirdpartyaction] = useState([]);
   const [isloading, setIsloading] = useState(false);
+
+
   const user = useSelector(state => state.loginUser.user)
   const token = user.token
   const dispatch = useDispatch();
@@ -36,6 +38,10 @@ function Quick_task() {
     PendingSubtask();
     todoSubtask();
     ALLSubtask();
+    handleReadyForReview()
+    HandlePendingClientReview()
+    HandlePendingThirdPartyAction()
+    HandleRevision()
   }, [])
 
   const CompletedSubtask = async () => {
@@ -106,6 +112,67 @@ function Quick_task() {
       console.log(err)
     }
   }
+  const handleReadyForReview = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=readyforreview`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setReadyforreview(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const HandlePendingClientReview = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=pendingclientreview`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setPendingclientreview(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const HandleRevision = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=revision`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setRevision(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const HandlePendingThirdPartyAction = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/subtask/getSubtask?status=pendingthirdpartyaction`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setPendingthirdpartyaction(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div>
       {isloading && <Spinner />}
@@ -126,10 +193,10 @@ function Quick_task() {
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div className="carousel-inner" style={{ marginTop: '2%' }}>
+        <div className="carousel-inner" style={{ marginTop: '2%', scrollBehavior: "smooth" }}>
           <div className="carousel-item active">
             <div>
-              <Test data={subtaskAll} />
+              <Test data={subtaskAll} item={"Quick tasks"} />
             </div>
             <div>
               <In_pogress data={subtaskPending} />
@@ -143,16 +210,16 @@ function Quick_task() {
           </div>
           <div className="carousel-item">
             <div>
-              <Review_projects data={taskreview} />
+              <Review_projects data={readyforreview} />
             </div>
             <div>
-              <Pending data={taskclientreview} />
+              <Pending data={pendingclientreview} />
             </div>
             <div>
-              <Revision data={taskrevision} />
+              <Revision data={revision} />
             </div>
             <div>
-              <Pending_3rdparty data={task3rdparty} />
+              <Pending_3rdparty data={pendingthirdpartyaction} />
             </div>
           </div>
         </div>

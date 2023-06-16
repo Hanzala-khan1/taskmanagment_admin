@@ -11,6 +11,8 @@ import axios from 'axios';
 import { API_HOST, getcategories } from '../../assets/dataconfig/dataconfig';
 import { useSelector } from 'react-redux';
 import Spinner from '../shared/spinner/spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Categories = () => {
   const [popup, setPopup] = useState(false);
@@ -69,6 +71,8 @@ const Categories = () => {
       });
       getcategories();
       setIsloading(false)
+      toast.error(`category deleted`, { position: toast.POSITION.TOP_CENTER });
+      return;
     } catch (err) {
       console.log(err);
     }
@@ -84,6 +88,7 @@ const Categories = () => {
         <Lower_nav data={"Add/Edit Categories"} />
       </div>
       <div>
+        <ToastContainer />
         <div className='categories'>
           <div className='top-x'>
             <h4>Categories</h4>

@@ -29,6 +29,17 @@ function Lower_nav({ data }) {
               Projects
             </Link>
           </li>
+          <li
+            // style={{textDecoration:'underline'}}
+            className={activeLink === 'projects' ? 'active' : ''}>
+            <Link
+              to='/project/task'
+              className={`lower_a ${activeLink === 'projects' ? 'active-link' : ''}`}
+              onClick={() => handleLinkClick('projects')}
+            >
+              Project Tasks
+            </Link>
+          </li>
           <li className={activeLink === 'quicktask' ? 'active' : ''}>
             <Link
               to='/quicktask'

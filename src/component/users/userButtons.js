@@ -8,16 +8,25 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import Spinner from '../shared/spinner/spinner'
 
 
 
 
 export default function UserButtons({ selectedUsers, getUser }) {
-
+  const [isloading, setIsloading] = useState(false);
   const userId = useSelector(state => state.loginUser.user)
   const token = userId.token
+
+  //////////////////////////////////////
   const handleDeletemultiple = () => {
-    console.log(selectedUsers)
+
+    if (selectedUsers.length <= 0) {
+      toast.error(`Select user to delete`, { position: toast.POSITION.TOP_CENTER });
+      return;
+    }
+    setIsloading(true)
     try {
       selectedUsers.map(async (row) => {
         const id = row
@@ -36,6 +45,7 @@ export default function UserButtons({ selectedUsers, getUser }) {
         }
       })
       getUser()
+      setIsloading(false)
       toast.error(`user Deleted`, { position: toast.POSITION.TOP_CENTER });
       return;
     } catch (err) {
@@ -54,6 +64,7 @@ export default function UserButtons({ selectedUsers, getUser }) {
 
           </div>
         </li> */}
+        {isloading && <Spinner />}
         <li className=''>
           <div className="dropdown">
             <button className="btn btn-secondary button_two size" type="button" >

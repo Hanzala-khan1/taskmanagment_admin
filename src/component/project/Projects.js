@@ -22,10 +22,10 @@ function Projects() {
   const [projectscompleted, setProjectscompleted] = useState([]);
   const [projectspending, setProjectspending] = useState([]);
   const [projectsall, setProjectsall] = useState([]);
-  const [projectsreview, setProjectsreview] = useState([]);
-  const [pendingclientreview, setpendingclientreview] = useState([]);
-  const [projectsrevision, setProjectsrevision] = useState([]);
-  const [pending3rdparty, setPending3rdparty] = useState([]);
+  const [readyforreview, setReadyforreview] = useState([]);
+  const [pendingclientreview, setPendingclientreview] = useState([]);
+  const [revision, setRevision] = useState([]);
+  const [pendingthirdpartyaction, setPendingthirdpartyaction] = useState([]);
 
   const [isloading, setIsloading] = useState(false);
 
@@ -37,6 +37,10 @@ function Projects() {
     Pendingprojects();
     Todoprojects();
     Newprojects();
+    handleReadyForReview()
+    HandlePendingClientReview()
+    HandlePendingThirdPartyAction()
+    HandleRevision()
   }, [])
 
   const Completedprojects = async () => {
@@ -106,6 +110,66 @@ function Projects() {
       console.log(err)
     }
   }
+  const handleReadyForReview = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/project/getproject?status=readyforreview`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setReadyforreview(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const HandlePendingClientReview = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/project/getproject?status=pendingclientreview`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setPendingclientreview(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const HandleRevision = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/project/getproject?status=revision`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setRevision(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const HandlePendingThirdPartyAction = async () => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `${API_HOST}/project/getproject?status=pendingthirdpartyaction`,
+        data: {},
+        headers: {
+          token: token
+        }
+      });
+      setPendingthirdpartyaction(res.data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div>
@@ -129,7 +193,7 @@ function Projects() {
         <div className="carousel-inner" style={{ marginTop: '2%' }}>
           <div className="carousel-item active">
             <div>
-              <Test data={projectsall} />
+              <Test data={projectsall} item={"Projects"} />
             </div>
             <div>
               <In_pogress data={projectspending} />
@@ -143,16 +207,16 @@ function Projects() {
           </div>
           <div className="carousel-item" >
             <div>
-              <Review_projects data={projectsreview} />
+              <Review_projects data={readyforreview} />
             </div>
             <div>
               <Pending data={pendingclientreview} />
             </div>
             <div>
-              <Revision data={projectsrevision} />
+              <Revision data={revision} />
             </div>
             <div>
-              <Pending_3rdparty data={pending3rdparty} />
+              <Pending_3rdparty data={pendingthirdpartyaction} />
             </div>
           </div>
         </div>

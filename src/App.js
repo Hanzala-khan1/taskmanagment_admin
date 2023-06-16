@@ -12,6 +12,7 @@ import Notification from './component/shared/Notification';
 import Setting_popUp from './component/Settings/Setting_popUp';
 import Projectstasks from './component/ProjectTask/ProjectTask';
 import ProjectTask from './component/ProjectTask/ProjectTask';
+import ProjectTasks from './component/ProjectTask/ProjectTask';
 
 function App() {
   const ProtectedRoutelogin = ({ children }) => {
@@ -50,7 +51,7 @@ function App() {
               </ProtectedRoutelogin>}>
           </Route>
           <Route path="/project" element={<ProtectedRoute><Projects /></ProtectedRoute>}> </Route>
-          <Route path='/project/task' element={<ProtectedRoute><ProjectTask /></ProtectedRoute>} />
+          <Route path='/project/task' element={<ProtectedRoute><ProjectTasks /></ProtectedRoute>} />
           <Route
             path='/quicktask'
             element={

@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { API_HOST } from '../../assets/dataconfig/dataconfig'
-import Review_projects from '../shared/Review_projects'
+import Review_tasks from '../shared/Review_projects'
 import Pending from '../shared/Pending'
 import Revision from '../shared/Revision'
 import Pending_3rdparty from '../shared/Pending_3rdparty'
@@ -19,15 +19,15 @@ import { isAccordionItemSelected } from 'react-bootstrap/esm/AccordionContext'
 import Spinner from '../shared/spinner/spinner'
 
 
-function ProjectTask() {
-    const [projectstodo, setProjectstodo] = useState([]);
-    const [projectscompleted, setProjectscompleted] = useState([]);
-    const [projectspending, setProjectspending] = useState([]);
-    const [projectsall, setProjectsall] = useState([]);
-    const [projectsreview, setProjectsreview] = useState([]);
-    const [pendingclientreview, setpendingclientreview] = useState([]);
-    const [projectsrevision, setProjectsrevision] = useState([]);
-    const [pending3rdparty, setPending3rdparty] = useState([]);
+function ProjectTasks() {
+    const [taskstodo, setTaskstodo] = useState([]);
+    const [taskscompleted, setTaskscompleted] = useState([]);
+    const [taskspending, setTaskspending] = useState([]);
+    const [tasksall, setTasksall] = useState([]);
+    const [readyforreview, setReadyforreview] = useState([]);
+    const [pendingclientreview, setPendingclientreview] = useState([]);
+    const [revision, setRevision] = useState([]);
+    const [pendingthirdpartyaction, setPendingthirdpartyaction] = useState([]);
 
     const [isloading, setIsloading] = useState(false);
 
@@ -35,75 +35,139 @@ function ProjectTask() {
     const token = user.token
 
     useEffect(() => {
-        Completedprojects();
-        Pendingprojects();
-        Todoprojects();
-        Newprojects();
+        Completedtasks();
+        Pendingtasks();
+        Todotasks();
+        Newtasks();
+        handleReadyForReview()
+        HandlePendingClientReview()
+        HandlePendingThirdPartyAction()
+        HandleRevision()
     }, [])
 
-    const Completedprojects = async () => {
+    const Completedtasks = async () => {
         setIsloading(true)
         try {
             const res = await axios({
                 method: 'get',
-                url: `${API_HOST}/project/getproject?status=completed`,
+                url: `${API_HOST}/task/getTask?status=completed`,
                 data: {},
                 headers: {
                     token: token
                 }
             })
 
-            setProjectscompleted(res.data.data)
+            setTaskscompleted(res.data.data)
             setIsloading(false)
         } catch (err) {
             console.log(err)
         }
     }
-    const Todoprojects = async () => {
+    const Todotasks = async () => {
         try {
             const res = await axios({
                 method: 'get',
-                url: `${API_HOST}/project/getproject?status=todo`,
+                url: `${API_HOST}/task/getTask?status=todo`,
                 data: {},
                 headers: {
                     token: token
                 }
             });
-            setProjectstodo(res.data.data)
+            setTaskstodo(res.data.data)
         } catch (err) {
             console.log(err)
         }
     }
-    const Newprojects = async () => {
+    const Newtasks = async () => {
         setIsloading(true)
         try {
             const res = await axios({
                 method: 'get',
-                url: `${API_HOST}/project/getproject?status=new`,
+                url: `${API_HOST}/task/getTask?status=new`,
                 data: {},
                 headers: {
                     token: token
                 }
             });
 
-            setProjectsall(res.data.data)
+            setTasksall(res.data.data)
             setIsloading(false)
         } catch (err) {
             console.log(err)
         }
     }
-    const Pendingprojects = async () => {
+    const Pendingtasks = async () => {
         try {
             const res = await axios({
                 method: 'get',
-                url: `${API_HOST}/project/getproject?status=pending`,
+                url: `${API_HOST}/task/getTask?status=pending`,
                 data: {},
                 headers: {
                     token: token
                 }
             });
 
-            setProjectspending(res.data.data)
+            setTaskspending(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const handleReadyForReview = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/task/getTask?status=readyforreview`,
+                data: {},
+                headers: {
+                    token: token
+                }
+            });
+            setReadyforreview(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const HandlePendingClientReview = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/task/getTask?status=pendingclientreview`,
+                data: {},
+                headers: {
+                    token: token
+                }
+            });
+            setPendingclientreview(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const HandleRevision = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/task/getTask?status=revision`,
+                data: {},
+                headers: {
+                    token: token
+                }
+            });
+            setRevision(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const HandlePendingThirdPartyAction = async () => {
+        try {
+            const res = await axios({
+                method: 'get',
+                url: `${API_HOST}/task/getTask?status=pendingthirdpartyaction`,
+                data: {},
+                headers: {
+                    token: token
+                }
+            });
+            setPendingthirdpartyaction(res.data.data)
         } catch (err) {
             console.log(err)
         }
@@ -116,7 +180,7 @@ function ProjectTask() {
                 <Nav />
             </div>
             <div>
-                <Lower_nav data={"Project Tasks"} />
+                <Lower_nav data={"task Tasks"} />
             </div>
             <br></br>
             <br></br>
@@ -131,30 +195,30 @@ function ProjectTask() {
                 <div className="carousel-inner" style={{ marginTop: '2%' }}>
                     <div className="carousel-item active">
                         <div>
-                            <Test data={projectsall} />
+                            <Test data={tasksall} item={"Tasks"} />
                         </div>
                         <div>
-                            <In_pogress data={projectspending} />
+                            <In_pogress data={taskspending} />
                         </div>
                         <div>
-                            <To_do data={projectstodo} />
+                            <To_do data={taskstodo} />
                         </div>
                         <div>
-                            <Completed data={projectscompleted} />
+                            <Completed data={taskscompleted} />
                         </div>
                     </div>
                     <div className="carousel-item" >
                         <div>
-                            <Review_projects data={projectsreview} />
+                            <Review_tasks data={readyforreview} />
                         </div>
                         <div>
                             <Pending data={pendingclientreview} />
                         </div>
                         <div>
-                            <Revision data={projectsrevision} />
+                            <Revision data={revision} />
                         </div>
                         <div>
-                            <Pending_3rdparty data={pending3rdparty} />
+                            <Pending_3rdparty data={pendingthirdpartyaction} />
                         </div>
                     </div>
                 </div>
@@ -172,4 +236,4 @@ function ProjectTask() {
     )
 }
 
-export default ProjectTask
+export default ProjectTasks
